@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Game, Rating, Comment
 
 
 class CustomUserAdmin(UserAdmin):
@@ -31,3 +31,34 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
+
+# Xbox Anticipator code - admin:
+
+
+@admin.register(Game)
+class GameAdmin(admin.ModelAdmin):
+
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ['title', 'game_info', 'release_date']
+    list_display = ('title', 'slug', 'status', 'release_date', 'created_date')
+    list_filter = ('status', 'release_date', 'created_date', 'dev_pub')
+
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+
+    search_fields = ['game', 'rate', 'user']
+    list_display = ('game', 'rate', 'user')
+    list_filter = ('game', 'rate', 'user')
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+
+    search_fields = ['game', 'content', 'user']
+    list_display = ('game', 'content', 'posted_on', 'user', 'approved')
+    list_filter = ('approved', 'posted_on')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)

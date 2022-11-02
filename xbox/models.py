@@ -30,7 +30,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-# Xbox Anticipator models:
+# Xbox Anticipator code - models:
 
 
 class Game(models.Model):
@@ -70,7 +70,7 @@ class Rating(models.Model):
         ]
 
     def __str__(self):
-        return self.rating
+        return f"{self.rate}"
 
 
 class Comment(models.Model):
@@ -91,4 +91,4 @@ class Comment(models.Model):
         return self.likes.count()
 
     def __str__(self):
-        return f"Comment {self.content} by {user.first_name} {user.last_name}"
+        return f"Comment {self.content} by {settings.AUTH_USER_MODEL}"
