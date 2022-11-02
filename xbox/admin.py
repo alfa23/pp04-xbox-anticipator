@@ -32,6 +32,7 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
+
 # Xbox Anticipator code - admin:
 
 

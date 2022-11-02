@@ -1,0 +1,90 @@
+/*  font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Orbitron', sans-serif; */
+
+body {
+    background-color: #F9FAFC;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #4A4A4F;
+}
+
+.brand-footer {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: #F9FAFC;
+}
+
+.brand-page {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 5rem;
+    color: #4A4A4F;
+}
+
+.btn-confirm {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-reservation {
+    background-color: #90ee90;
+}
+
+.btn-submit {
+    background-color: #445261;
+    color: #F9FAFC;
+}
+
+.custom-gray {
+    background-color: #777;
+}
+
+.dark-bg {
+    background-color: #445261;
+}
+
+.footer-copy {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.footer a {
+    padding-top: 1rem;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+
+.hr-medium {
+    width: 66%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.hr-small {
+    width: 33%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.main-bg {
+    background-color: #F9FAFC;
+}
+
+.template-link {
+    text-decoration: none;
+    color: #445261;
+    margin-bottom: 1rem;
+}
+
+#page-subhead {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}

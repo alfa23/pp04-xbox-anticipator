@@ -1,14 +1,68 @@
 {% extends "base.html" %}
 
-{% block title %}Index{% endblock %}
-
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.first_name }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-{% endblock %}
+
+<div class="container-fluid">
+    <div class="row">
+        <img src="https://res.cloudinary.com/alfa23/image/upload/"
+            class="img-fluid" alt="image of green xbox logo">
+        <div class="col-lg-10 mt-3 offset-lg-1 text-center">
+            <hr>
+            <h1><span class="brand-page">Xbox <em style="font-weight: 400;">Anticipator</em></span></h1>
+            <h2 id="page-subhead">Rate and discuss upcoming Xbox games!</h2>
+            <hr class="hr-small">
+            {% if user.is_authenticated %}
+            <p>Click on a game to find out more and leave an anticipation rating or comment.</p>
+            {% else %}
+            <p>Please <a href="{% url 'signup' %}" class="template-link"><strong>register</strong> </a>or
+                <a href="{% url 'login' %}" class="template-link"><strong>sign in</strong></a> to leave an anticipation rating or comment.
+            </p>
+            {% endif %}
+            <hr>
+        </div>
+        <div class="container-lg text-center">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ game.title }}</h5>
+                            <hr>
+                            <h6 class="card-subtitle">Anticipation Rating: </h6>
+                            <hr>
+                            <h6 class="card-subtitle">Release Date: {{ game.release_date }}</h6>
+                            <hr>
+                            <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
+                            <p class="card-text">{{ game.website }}</p>
+                            <hr>
+                            <p class="card-text">
+                                {{ game.info_excerpt }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ game.title }}</h5>
+                            <hr>
+                            <h6 class="card-subtitle">Anticipation Rating: </h6>
+                            <hr>
+                            <h6 class="card-subtitle">Release Date: {{ game.release_date }}</h6>
+                            <hr>
+                            <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
+                            <p class="card-text">{{ game.website }}</p>
+                            <hr>
+                            <p class="card-text">
+                                {{ game.info_excerpt }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+{%endblock%}
