@@ -43,6 +43,10 @@ class GameAdmin(admin.ModelAdmin):
     search_fields = ['title', 'game_info', 'release_date']
     list_display = ('title', 'slug', 'status', 'release_date', 'created_date')
     list_filter = ('status', 'release_date', 'created_date', 'dev_pub')
+    actions = ['publish_draft']
+
+    def publish_draft(self, request, queryset):
+        queryset.update(status=1)
 
 
 @admin.register(Rating)

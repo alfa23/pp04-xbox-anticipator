@@ -44,6 +44,8 @@ class Game(models.Model):
     info_excerpt = models.TextField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    commenters_tally = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='game_commenters', blank=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
         )
@@ -53,6 +55,9 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
+
+    def number_of_commenters(self):
+        return self.commenters_tally.count()
 
 
 class Rating(models.Model):

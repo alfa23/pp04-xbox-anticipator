@@ -8,5 +8,6 @@ from .views import SignUpView
 urlpatterns = [
     path("signup/", SignUpView.as_view(), name="signup"),
     # Xbox Anticipator code - urls:
-    path('', views.GameList.as_view(), name='index')
+    path('', views.GameList.as_view(), name='index'),
+    path('<slug:slug>/', views.GameDetail.as_view(), name='game_detail'),
 ]

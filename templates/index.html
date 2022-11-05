@@ -8,8 +8,13 @@
         <div class="col-lg-10 mt-3 offset-lg-1 text-center">
             <hr>
             <h1><span class="brand-page">Xbox <em style="font-weight: 400;">Anticipator</em></span></h1>
-            <h2 id="page-subhead">Rate and discuss upcoming Xbox games!</h2>
+            <h2 id="page-subhead"><em>Discover, rate and discuss upcoming Xbox games!</em></h2>
             <hr class="hr-small">
+            {% if user.is_staff %}
+            <div class="row text-center">
+                <h3><a href="#" class="template-link"><strong>ADD A GAME</strong></a></h3>
+            </div>
+            {% endif %}
             {% if user.is_authenticated %}
             <p>Click on a game to find out more and leave an anticipation rating or comment.</p>
             {% else %}
@@ -31,13 +36,13 @@
                                 <img class="card-img-top"
                                     src="https://res.cloudinary.com/alfa23/image/upload/v1667614281/media/Testcard_F_y882z5.jpg">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ game.fature_image.url }} ">
+                                <img class="card-img-top" src=" {{ game.feature_image.url }} ">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="rating"><span class="brand">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating.rate }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="game-link">
+                            <a href="{% url 'game_detail' game.slug %}" class="game-link">
                                 <h3 class="card-title">{{ game.title }}</h3>
                                 <p class="card-text">{{ game.info_excerpt }}</p>
                             </a>
@@ -46,7 +51,7 @@
                             <hr>
                             <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
                             <hr>
-                            <p class="card-text"><i class="far fa-comment"></i>{{ game.number_of_comments }}</p>
+                            <p class="card-text"><i class="far fa-user">&nbsp;</i><i class="far fa-comment"></i> {{ game.number_of_commenters }}</p>
                         </div>
                     </div>
                 </div>

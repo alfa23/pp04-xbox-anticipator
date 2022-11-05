@@ -1,5 +1,7 @@
 /*  font-family: 'Montserrat Alternates', sans-serif;
-    font-family: 'Orbitron', sans-serif; */
+    font-family: 'Orbitron', sans-serif;
+    xbox green hex: #0e7a0d;
+*/
 
 body {
     font-family: 'Montserrat Alternates', sans-serif;
@@ -12,7 +14,7 @@ body {
     color: #0e7a0d;
 }
 
-.brand-footer {
+.brand-reverse {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.2rem;
@@ -86,4 +88,58 @@ body {
 #page-subhead {
     margin-bottom: 1rem;
     margin-top: 1rem;
+}
+
+.masthead {
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 33vh;
+    width: 100%;
+}
+
+.masthead-text {
+    background-color: #0e7a0d;
+    color: white;
+    position: relative;
+}
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.masthead-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 90%;
+    height: 100%;
+    width: 150%;
+    background: #0e7a0d;
+    -webkit-transform: skew(15deg);
+    -moz-transform: skew(15deg);
+    transform: skew(15deg);
+    z-index: 100;
+}
+
+.game-link {
+    text-decoration: none;
+    color: #0e7a0d;
+}
+
+.game-link:hover,
+.page-link {
+    color: #E84610;
+}
+
+.game-title {
+    margin-top: 20%;
+    margin-left: 5%;
+}
+
+.game-subtitle {
+    margin-left: 5%;
+    color: lightgray;
 }
