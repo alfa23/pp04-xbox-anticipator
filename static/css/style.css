@@ -2,7 +2,6 @@
     font-family: 'Orbitron', sans-serif; */
 
 body {
-    background-color: #F9FAFC;
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -10,7 +9,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.8rem;
-    color: #4A4A4F;
+    color: #0e7a0d;
 }
 
 .brand-footer {
@@ -24,7 +23,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 5rem;
-    color: #4A4A4F;
+    color: #0e7a0d;
 }
 
 .btn-confirm {
@@ -37,16 +36,16 @@ body {
 }
 
 .btn-submit {
-    background-color: #445261;
+    background-color: #0e7a0d;
     color: #F9FAFC;
 }
 
 .custom-gray {
-    background-color: #777;
+    background-color: #0e7a0d;
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #0e7a0d;
 }
 
 .footer-copy {
@@ -80,7 +79,7 @@ body {
 
 .template-link {
     text-decoration: none;
-    color: #445261;
+    color: #0e7a0d;
     margin-bottom: 1rem;
 }
 
