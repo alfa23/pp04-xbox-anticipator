@@ -4,7 +4,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, GameForm
 from django.views import generic, View
 from .models import Game, Rating, Comment, CustomUser
 
@@ -33,7 +33,7 @@ class GameDetail(View):
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
         liked = False
-        # if comments.likes.filter(id=self.request.user.id).exists():
+        # if game.likes.filter(id=self.request.user.id).exists():
         #     liked = True
 
         return render(
@@ -46,3 +46,10 @@ class GameDetail(View):
                 'liked': liked
             }
         )
+
+
+class GameCreateView(CreateView):
+    model = Game
+    form_class = GameForm
+    template_name = 'game_create.html'
+    success_url = reverse_lazy('index')

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <img src="https://res.cloudinary.com/alfa23/image/upload/v1667615192/media/xbox-2022_la8fmu.png" class="img-fluid" alt="image of green xbox logo">
+        <div class="col-lg-10 mt-3 offset-lg-1 text-center">
+            <hr>
+            <h1><span class="brand-page">Xbox <em style="font-weight: 400;">Anticipator</em></span></h1>
+            <h2 id="page-subhead"><em>Discover, rate and discuss upcoming Xbox games!</em></h2>
+            <hr class="hr-small">
+            {% if user.is_staff %}
+            <div class="row text-center">
+                <h3 class="template-link"><strong>ADDING NEW GAME:</strong></h3>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="ADD GAME">
+            </form>
+            {% else %}
+            <p>Please <a href="#" class="template-link"><strong>request to join the team</strong> </a>
+                for the ability to add forthcoming Xbox games to the database.
+            </p>
+            {% endif %}
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

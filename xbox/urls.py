@@ -10,4 +10,5 @@ urlpatterns = [
     # Xbox Anticipator code - urls:
     path('', views.GameList.as_view(), name='index'),
     path('<slug:slug>/', views.GameDetail.as_view(), name='game_detail'),
+    path('create/', views.GameCreateView.as_view(), name='game_create')
 ]
