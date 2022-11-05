@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <img src="https://res.cloudinary.com/alfa23/image/upload/" class="img-fluid" alt="image of green xbox logo">
+        <img src="https://res.cloudinary.com/alfa23/image/upload/v1667615192/media/xbox-2022_la8fmu.png" class="img-fluid" alt="image of green xbox logo">
         <div class="col-lg-10 mt-3 offset-lg-1 text-center">
             <hr>
             <h1><span class="brand-page">Xbox <em style="font-weight: 400;">Anticipator</em></span></h1>
@@ -27,14 +27,14 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if 'placeholder' in game.featured_image.url %}
-                                <img class="card-top-img"
-                                    src="">
+                                {% if 'placeholder' in game.feature_image.url %}
+                                <img class="card-img-top"
+                                    src="https://res.cloudinary.com/alfa23/image/upload/v1667614281/media/Testcard_F_y882z5.jpg">
                                 {% else %}
-                                <img class="card-top-img" src=" {{ game.fatured_image.url }} ">
+                                <img class="card-img-top" src=" {{ game.fature_image.url }} ">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="rating">Anticipation Rating: {{ rating.rate }}</p>
+                                    <p class="rating"><span class="brand">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating.rate }}</p>
                                 </div>
                             </div>
                             <a href="#" class="game-link">
@@ -43,6 +43,7 @@
                             </a>
                             <hr>
                             <h6 class="card-subtitle">Release Date: {{ game.release_date }}</h6>
+                            <hr>
                             <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
                             <hr>
                             <p class="card-text"><i class="far fa-comment"></i>{{ game.number_of_comments }}</p>

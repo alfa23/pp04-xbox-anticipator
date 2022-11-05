@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from django.views import generic
-from .models import Game
+from .models import Game, Rating
 
 
 class SignUpView(CreateView):
@@ -18,7 +18,7 @@ class SignUpView(CreateView):
 
 
 class GameList(generic.ListView):
-    model = Game
+    model = Game, Rating
     queryset = Game.objects.filter(status=1).order_by('release_date')
     template_name = 'index.html'
     paginate_by = 6
