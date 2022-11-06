@@ -5,6 +5,13 @@
 
 body {
     font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 1.2rem;
+}
+
+.account-header {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    color: #0e7a0d;
 }
 
 .brand {
@@ -28,17 +35,13 @@ body {
     color: #0e7a0d;
 }
 
-.btn-confirm {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.btn-reservation {
-    background-color: #90ee90;
-}
-
-.btn-submit {
+.btn-custom {
     background-color: #0e7a0d;
+    color: #F9FAFC;
+}
+
+.btn-custom:hover {
+    background-color: #E84610;
     color: #F9FAFC;
 }
 

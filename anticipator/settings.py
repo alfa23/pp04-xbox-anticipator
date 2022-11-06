@@ -41,11 +41,50 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'xbox',
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
+
+# Custom User Model process referenced from:
+# https://testdriven.io/blog/django-custom-user-model/
+
+AUTH_USER_MODEL = 'xbox.CustomUser'
+
+
+# Settings for CustomUser email as username in Django-AllAuth, sourced from:
+# https://pyphilly.org/know-thy-user-custom-user-models-django-allauth/
+
+# INSTALLED_APPS += AUTH_APPS
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+
+# Account Forms updated for CustomSignupForm, sourced from:
+# https://www.geeksforgeeks.org/python-extending-and-customizing-django-allauth/
+ACCOUNT_FORMS = {
+    'signup': 'xbox.forms.CustomSignupForm',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -92,11 +131,6 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
-
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
-
-AUTH_USER_MODEL = 'xbox.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -146,6 +180,3 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGIN_REDIRECT_URL = 'index'
-LOGOUT_REDIRECT_URL = 'index'

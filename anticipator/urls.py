@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('xbox.urls'), name='xbox_urls'),
     path('xbox/', include('django.contrib.auth.urls')),
-    # path('create/', GameCreateView.as_view(), name='game_create')
+    path('accounts/', include('allauth.urls')),
 ]

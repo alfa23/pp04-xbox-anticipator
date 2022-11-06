@@ -45,14 +45,14 @@
                         <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+                        <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Register</a>
+                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+                        <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
                     </li>
                     {% endif %}
                 </ul>
