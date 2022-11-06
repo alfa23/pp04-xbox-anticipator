@@ -85,7 +85,7 @@ class Comment(models.Model):
         Game, on_delete=models.CASCADE, related_name='comments')
     content = models.TextField()
     posted_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=True)
     likes = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='comment_likes', blank=True)
 

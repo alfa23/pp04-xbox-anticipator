@@ -7,7 +7,7 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="game-title">{{ game.title }}</h1>
-                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }} | <span class="brand-reverse">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating.rate }}</p>
+                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }} | <span class="brand-reverse">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in game.feature_image.url %}

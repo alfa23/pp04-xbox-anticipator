@@ -32,6 +32,19 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
+        rating_total = 0
+        rating_count = 0
+        ratings = Rating.objects.filter(
+            game=game
+        ).all()
+        print("Debugging here...")
+        for _rating in ratings:
+            rating_total += _rating.rate
+            rating_count += 1
+        if rating_count> 0:
+            rating = rating_total / rating_count
+        else:
+            rating = 0
         liked = False
         # if game.likes.filter(id=self.request.user.id).exists():
         #     liked = True
@@ -45,7 +58,8 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': False,
                 'comment_form': CommentForm(),
-                'liked': liked
+                'liked': liked,
+                'rating': rating
             }
         )
 
@@ -61,11 +75,12 @@ class GameDetail(View):
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
-            user_id = request.user.first_name
+            # user_id = request.user.id
             comment_form.instance.email = request.user.email
-            comment_form.instance.name = user_id
+            # comment_form.instance.name = user_id
             comment = comment_form.save(commit=False)
             comment.game = game
+            comment.user = request.user
             comment.save()
         else:
             comment_form = CommentForm()
