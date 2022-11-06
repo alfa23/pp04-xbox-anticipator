@@ -4,7 +4,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from .forms import CustomUserCreationForm, GameForm
+from .forms import CustomUserCreationForm, GameForm, CommentForm
 from django.views import generic, View
 from .models import Game, Rating, Comment, CustomUser
 
@@ -43,6 +43,42 @@ class GameDetail(View):
                 'game': game,
                 'commenters': commenters,
                 'comments': comments,
+                'commented': False,
+                'comment_form': CommentForm(),
+                'liked': liked
+            }
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Game.objects.filter(status=1)
+        game = get_object_or_404(queryset, slug=slug)
+        commenters = game.commenters_tally.count()
+        comments = game.comments.filter(approved=True).order_by('posted_on')
+        liked = False
+        # if game.likes.filter(id=self.request.user.id).exists():
+        #     liked = True
+
+        comment_form = CommentForm(data=request.POST)
+
+        if comment_form.is_valid():
+            user_id = request.user.first_name
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = user_id
+            comment = comment_form.save(commit=False)
+            comment.game = game
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            'game_detail.html',
+            {
+                'game': game,
+                'commenters': commenters,
+                'comments': comments,
+                'commented': True,
+                'comment_form': CommentForm(),
                 'liked': liked
             }
         )

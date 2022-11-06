@@ -45,6 +45,16 @@ body {
     color: #F9FAFC;
 }
 
+.comment-box {
+    margin-top: 1.2rem;
+}
+
+.comment-header {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    color: #0e7a0d;
+}
+
 .custom-gray {
     background-color: #0e7a0d;
 }

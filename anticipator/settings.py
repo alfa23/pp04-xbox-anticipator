@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'crispy_forms',
     'xbox',
 ]
 
@@ -55,6 +56,8 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Custom User Model process referenced from:

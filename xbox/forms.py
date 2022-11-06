@@ -4,7 +4,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from allauth.account.forms import SignupForm
 from django import forms
-from .models import CustomUser, Game
+from .models import CustomUser, Game, Comment
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -51,3 +51,9 @@ class GameForm(forms.ModelForm):
             'info_excerpt',
             'status',
         ]
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('content',)
