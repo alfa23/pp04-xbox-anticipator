@@ -3,9 +3,10 @@
 
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.views.generic.edit import CreateView
-from .forms import CustomUserCreationForm, GameForm, CommentForm
 from django.views import generic, View
+from .forms import CustomUserCreationForm, GameForm, CommentForm
 from .models import Game, Rating, Comment, CustomUser
 
 
@@ -39,14 +40,14 @@ class GameDetail(View):
         for _rating in ratings:
             rating_total += _rating.rate
             rating_count += 1
-            # print("debugging")
         if rating_count > 0:
             rating_raw = rating_total / rating_count    # Calculate raw average
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
             rating = 0
+            rating_rounded = 0
         liked = False
-        # if game.likes.filter(id=self.request.user.id).exists():
+        # if request.comment.likes.filter(id=self.request.user.id).exists():
         #     liked = True
 
         return render(
@@ -59,8 +60,8 @@ class GameDetail(View):
                 'commented': False,
                 'comment_form': CommentForm(),
                 'liked': liked,
-                # 'rating': rating,
-                'rating_rounded': rating_rounded
+                'rating': rating,
+                'rating_rounded': rating_rounded,
 
             }
         )
@@ -70,8 +71,21 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
+        """ Calculate average game rating """
+        rating_total = 0
+        rating_count = 0
+        ratings = Rating.objects.filter(game=game).all()
+        for _rating in ratings:
+            rating_total += _rating.rate
+            rating_count += 1
+        if rating_count > 0:
+            rating_raw = rating_total / rating_count    # Calculate raw average
+            rating_rounded = round(rating_raw, 1)       # and round to 1dp
+        else:
+            rating = 0
+            rating_rounded = 0
         liked = False
-        # if game.likes.filter(id=self.request.user.id).exists():
+        # if request.comment.likes.filter(id=self.request.user.id).exists():
         #     liked = True
 
         comment_form = CommentForm(data=request.POST)
@@ -84,6 +98,7 @@ class GameDetail(View):
             comment.game = game
             comment.user = request.user
             comment.save()
+            messages.success(request, 'Comment posted successfully!')
         else:
             comment_form = CommentForm()
 
@@ -96,7 +111,9 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': True,
                 'comment_form': CommentForm(),
-                'liked': liked
+                'liked': liked,
+                'rating': rating,
+                'rating_rounded': rating_rounded
             }
         )
 

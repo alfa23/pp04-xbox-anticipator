@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
             <div class="card-body">
-                <h3 class="comment-header">Comments:</h3>
+                <h3 class="custom-header">Comments:</h3>
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <hr>
@@ -77,12 +77,18 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
+                <h3 class="custom-header">Post a comment:</h3>
+                <hr>
+                <p>Commenting as: {{ user.first_name }}</p>
+                <form method="POST" class="comment-box">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Submit</button>
+                </form>
                 {% else %}
                 {% if user.is_authenticated %}
-                <h4 class="comment-header">Leave a comment:</h4>
+                <h3 class="custom-header">Post a comment:</h3>
+                <hr>
                 <p>Commenting as: {{ user.first_name }}</p>
                 <form method="POST" class="comment-box">
                     {{ comment_form | crispy }}

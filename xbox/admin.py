@@ -62,7 +62,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     search_fields = ['game', 'content', 'user']
     list_display = ('game', 'content', 'posted_on', 'user', 'approved')
-    list_filter = ('approved', 'posted_on')
+    list_filter = ('game', 'posted_on', 'approved')
     actions = ['approve_comments']
 
     def approve_comments(self, request, queryset):
