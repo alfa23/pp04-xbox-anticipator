@@ -49,7 +49,8 @@ class GameForm(forms.ModelForm):
             'website',
             'game_info',
             'info_excerpt',
-            'status',
+            'feature_image',
+            # 'status',
         ]
 
 

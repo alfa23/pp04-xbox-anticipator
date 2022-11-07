@@ -12,8 +12,9 @@
             <hr class="hr-small">
             {% if user.is_staff %}
             <div class="row text-center">
-                <h3><a href="{% url 'game_create' %}" class="template-link"><strong>ADD A GAME</strong></a></h3>
+                <h2><a href="{% url 'game_create' %}" class="template-link custom-header">ADD A GAME</a></h2>
             </div>
+            <hr class="hr-small">
             {% endif %}
             {% if user.is_authenticated %}
             <p>Click on a game to find out more and leave an anticipation rating or comment.</p>
@@ -39,7 +40,7 @@
                                 <img class="card-img-top" src=" {{ game.feature_image.url }} ">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="rating"><span class="brand">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating.rate }}</p>
+                                    <p class="rating"><span class="brand">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating_rounded }}</p>
                                 </div>
                             </div>
                             <a href="{% url 'game_detail' game.slug %}" class="game-link">

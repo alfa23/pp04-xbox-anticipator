@@ -43,7 +43,7 @@ class Game(models.Model):
     game_info = models.TextField()
     info_excerpt = models.TextField(blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     commenters_tally = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name='game_commenters', blank=True)
     user = models.ForeignKey(
