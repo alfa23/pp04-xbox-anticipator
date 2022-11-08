@@ -50,6 +50,13 @@ body {
     color: #0e7a0d;
 }
 
+.custom-header-rev {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #F9FAFC;
+}
+
 .custom-gray {
     background-color: #0e7a0d;
 }

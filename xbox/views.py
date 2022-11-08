@@ -1,9 +1,11 @@
 # Custom User Model process referenced from:
 # https://testdriven.io/blog/django-custom-user-model/
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+from django.template.defaultfilters import slugify
 from django.views.generic.edit import CreateView
 from django.views import generic, View
 from .forms import CustomUserCreationForm, GameForm, CommentForm
@@ -33,6 +35,20 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
+
+        """ User rating """
+        print("DEBUGGING")
+
+        ratings = Rating.objects.filter(game=game).all()
+        if ratings.filter(user=self.request.user).exists():
+            current_user_rating = ratings.filter(user=self.request.user)
+        else:
+            current_user_rating = 0
+
+        print(game)
+        print(ratings)
+        print(current_user_rating)
+
         """ Calculate average game rating """
         rating_total = 0
         rating_count = 0
@@ -44,7 +60,7 @@ class GameDetail(View):
             rating_raw = rating_total / rating_count    # Calculate raw average
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
-            rating = 0
+            # rating = 0
             rating_rounded = 0
         liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
@@ -60,7 +76,7 @@ class GameDetail(View):
                 'commented': False,
                 'comment_form': CommentForm(),
                 'liked': liked,
-                'rating': rating,
+                # 'rating': rating,
                 'rating_rounded': rating_rounded,
 
             }
@@ -82,7 +98,7 @@ class GameDetail(View):
             rating_raw = rating_total / rating_count    # Calculate raw average
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
-            rating = 0
+            # rating = 0
             rating_rounded = 0
         liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
@@ -112,7 +128,7 @@ class GameDetail(View):
                 'commented': True,
                 'comment_form': CommentForm(),
                 'liked': liked,
-                'rating': rating,
+                # 'rating': rating,
                 'rating_rounded': rating_rounded
             }
         )
@@ -122,4 +138,31 @@ class GameCreateView(CreateView):
     model = Game
     form_class = GameForm
     template_name = 'game_create.html'
-    success_url = reverse_lazy('index')
+    # messages.add_message(self.request, messages.success, 'Game data created')
+    success_message = '{% game %} data created!'
+    # success_url = reverse_lazy('index')
+
+    def get_success_url(self):
+
+        # print('DEBUGGING')
+        # print(self.object)
+        current_slug = slugify(self.object)
+        # print(current_slug)
+        # messages.success(request, 'New game added successfully.')
+
+        return reverse('game_detail', kwargs={'slug': current_slug})
+        # return reverse('game_detail', kwargs={'slug': self.kwargs['slug']})
+
+    def form_valid(self, form):
+        form.instance.slug = slugify(form.instance.title)
+        f = form.save(commit=False)
+        f.user = self.request.user
+        f.creator = self.request.user
+        f.save()
+
+        return super(GameCreateView, self).form_valid(form)
+
+    def form_invalid(self, form):
+
+        return self.render_to_response(
+            self.get_context_data(form=form))

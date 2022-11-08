@@ -4,6 +4,7 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from allauth.account.forms import SignupForm
 from django import forms
+from django.forms.widgets import DateInput
 from .models import CustomUser, Game, Comment
 
 
@@ -38,12 +39,20 @@ class CustomSignupForm(SignupForm):
         user.save()
         return user
 
+# DateInput CBV created to enable date picker in Django, sourced from:
+# https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django
+
+
+# class DateInput(forms.DateInput):
+#     input_type = 'date'
+
 
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
         fields = [
             'title',
+            # 'slug',
             'dev_pub',
             'release_date',
             'website',
@@ -52,9 +61,12 @@ class GameForm(forms.ModelForm):
             'feature_image',
             # 'status',
         ]
+        widgets = {
+            'release_date': DateInput(attrs={'type': 'date'}),
+        }
 
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('content',)
+        fields = ['content', ]

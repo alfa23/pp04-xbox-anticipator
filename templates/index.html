@@ -6,16 +6,8 @@
     <div class="row">
         <img src="https://res.cloudinary.com/alfa23/image/upload/v1667615192/media/xbox-2022_la8fmu.png" class="img-fluid" alt="image of green xbox logo">
         <div class="col-lg-10 mt-3 offset-lg-1 text-center">
-            <hr>
             <h1><span class="brand-page">Xbox <em style="font-weight: 400;">Anticipator</em></span></h1>
             <h2 id="page-subhead"><em>Discover, rate and discuss upcoming Xbox games!</em></h2>
-            <hr class="hr-small">
-            {% if user.is_staff %}
-            <div class="row text-center">
-                <h2><a href="{% url 'game_create' %}" class="template-link custom-header">ADD A GAME</a></h2>
-            </div>
-            <hr class="hr-small">
-            {% endif %}
             {% if user.is_authenticated %}
             <p>Click on a game to find out more and leave an anticipation rating or comment.</p>
             {% else %}
@@ -24,7 +16,16 @@
                 rating or comment.
             </p>
             {% endif %}
-            <hr>
+            {% if user.is_staff %}
+            <hr class="hr-small">
+            <div class="row text-center">
+                <div class="col-lg-8 mt-3 offset-lg-2">
+                    <a href="{% url 'game_create' %}" class="btn btn-custom custom-header-rev">ADD A NEW GAME</a>
+                </div>
+            </div>
+            <br>
+            <hr class="hr-small">
+            {% endif %}
         </div>
         <div class="col-lg-12 mt-3 left">
             <div class="row">

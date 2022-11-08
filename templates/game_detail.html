@@ -7,11 +7,13 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="game-title">{{ game.title }}</h1>
-                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }} | <span class="brand-reverse">X<em style="font-weight: 400;">A-Rating:</em> {{ rating_rounded }}</span></p>
+                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }} | <span class="brand-reverse">X<em
+                            style="font-weight: 400;">A-Rating:</em> {{ rating_rounded }}</span></p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in game.feature_image.url %}
-                <img src="https://res.cloudinary.com/alfa23/image/upload/v1667614281/media/Testcard_F_y882z5.jpg" width="100%">
+                <img src="https://res.cloudinary.com/alfa23/image/upload/v1667614281/media/Testcard_F_y882z5.jpg"
+                    width="100%">
                 {% else %}
                 <img src=" {{ game.feature_image.url }}" width="100%">
                 {% endif %}
@@ -19,13 +21,18 @@
         </div>
     </div>
 </div>
-
+{% if user.is_staff %}
+<div class="row text-center">
+    <div class="col-lg-10 mt-3 offset-lg-1">
+        <a href="{% url 'game_create' %}" class="btn btn-custom custom-header-rev">EDIT GAME</a>&nbsp;
+        <a href="{% url 'game_create' %}" class="btn btn-danger custom-header-rev">DELETE GAME</a>
+    </div>
+</div>
+{% endif %}
 <div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
+        <div class="col card mb-4  mt-3 left top">
             <div class="card-body">
-                <!-- The game content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text ">
                     {{ game.game_info | safe }}
                 </p>
@@ -33,7 +40,8 @@
 
                     <div class="col-1">
                         <!-- The number of users commenting -->
-                        <strong class="text-secondary"><i class="far fa-user"></i> {{ game.number_of_commenters }} </strong>
+                        <strong class="text-secondary"><i class="far fa-user"></i> {{ game.number_of_commenters }}
+                        </strong>
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
