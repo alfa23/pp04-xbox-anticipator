@@ -144,11 +144,10 @@ class GameCreateView(CreateView):
     model = Game
     form_class = GameForm
     template_name = 'game_create.html'
-    # messages.add_message(self.request, messages.success, 'Game data created')
-    success_message = '{% game %} data created!'
-    # success_url = reverse_lazy('index')
+    # success_message = '{% game %} data created!'
 
     def get_success_url(self):
+        messages.success(self.request, 'Game data created successfully')
         current_slug = slugify(self.object)
         return reverse('game_detail', kwargs={'slug': current_slug})
 
@@ -162,7 +161,6 @@ class GameCreateView(CreateView):
         return super(GameCreateView, self).form_valid(form)
 
     def form_invalid(self, form):
-
         return self.render_to_response(
             self.get_context_data(form=form))
 
@@ -171,13 +169,14 @@ class GameUpdateView(UpdateView):
     model = Game
     form_class = GameForm
     template_name = 'game_update.html'
-    success_message = '{% game %} data updated!'
 
     def get_success_url(self):
+        messages.success(self.request, 'Game data updated successfully')
         current_slug = slugify(self.object)
         return reverse('game_detail', kwargs={'slug': current_slug})
 
 
 class GameDeleteView(DeleteView):
     model = Game
+    success_message = 'Game data deleted successfully'
     success_url = reverse_lazy('index')

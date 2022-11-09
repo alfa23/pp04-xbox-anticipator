@@ -64,8 +64,8 @@
             <div class="card-body">
                 <h3 class="custom-header">Comments:</h3>
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-                {% for comment in comments %}
                 <hr>
+                {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
@@ -78,6 +78,7 @@
                     <!-- The body of the comment goes before the | -->
                     {{ comment.content | linebreaks }}
                 </div>
+                <hr>
                 <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
