@@ -24,7 +24,7 @@
 {% if user.is_staff %}
 <div class="row text-center">
     <div class="col-lg-10 mt-3 offset-lg-1">
-        <a href="{% url 'game_create' %}" class="btn btn-custom custom-header-rev">EDIT GAME</a>&nbsp;
+        <a href="{% url 'game_update' game.slug %}" class="btn btn-custom custom-header-rev">EDIT GAME</a>&nbsp;
         <a href="{% url 'game_create' %}" class="btn btn-danger custom-header-rev">DELETE GAME</a>
     </div>
 </div>

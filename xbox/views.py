@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views import generic, View
 from .forms import CustomUserCreationForm, GameForm, CommentForm
 from .models import Game, Rating, Comment, CustomUser
@@ -37,7 +37,7 @@ class GameDetail(View):
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
         """ User rating """
-        print("DEBUGGING")
+        # print("DEBUGGING")
 
         ratings = Rating.objects.filter(game=game).all()
         if ratings.filter(user=self.request.user).exists():
@@ -45,9 +45,9 @@ class GameDetail(View):
         else:
             current_user_rating = 0
 
-        print(game)
-        print(ratings)
-        print(current_user_rating)
+        # print(game)
+        # print(ratings)
+        # print(current_user_rating)
 
         """ Calculate average game rating """
         rating_total = 0
@@ -66,6 +66,13 @@ class GameDetail(View):
         # if request.comment.likes.filter(id=self.request.user.id).exists():
         #     liked = True
 
+        print("DEBUGGING-2")
+
+        print(game)
+        print(slug)
+        print(game.slug)
+        # print(current_user_rating)
+
         return render(
             request,
             'game_detail.html',
@@ -78,7 +85,6 @@ class GameDetail(View):
                 'liked': liked,
                 # 'rating': rating,
                 'rating_rounded': rating_rounded,
-
             }
         )
 
@@ -143,15 +149,8 @@ class GameCreateView(CreateView):
     # success_url = reverse_lazy('index')
 
     def get_success_url(self):
-
-        # print('DEBUGGING')
-        # print(self.object)
         current_slug = slugify(self.object)
-        # print(current_slug)
-        # messages.success(request, 'New game added successfully.')
-
         return reverse('game_detail', kwargs={'slug': current_slug})
-        # return reverse('game_detail', kwargs={'slug': self.kwargs['slug']})
 
     def form_valid(self, form):
         form.instance.slug = slugify(form.instance.title)
@@ -166,3 +165,14 @@ class GameCreateView(CreateView):
 
         return self.render_to_response(
             self.get_context_data(form=form))
+
+
+class GameUpdateView(UpdateView):
+    model = Game
+    form_class = GameForm
+    template_name = 'game_update.html'
+    success_message = '{% game %} data updated!'
+
+    def get_success_url(self):
+        current_slug = slugify(self.object)
+        return reverse('game_detail', kwargs={'slug': current_slug})

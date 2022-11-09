@@ -10,7 +10,7 @@ urlpatterns = [
     # Xbox Anticipator code - urls:
     path('', views.GameList.as_view(), name='index'),
     path('create/', views.GameCreateView.as_view(), name='game_create'),
-    # path('update/', views.GameUpdateView.as_view(), name='game_update'),
+    path('update/<slug:slug>/', views.GameUpdateView.as_view(), name='game_update'),
     # path('delete/', views.GameDeleteView.as_view(), name='game_delete'),
     path('<slug:slug>/', views.GameDetail.as_view(), name='game_detail'),
 ]
