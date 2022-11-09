@@ -8,14 +8,15 @@
         <div class="col-lg-10 mt-3 offset-lg-1 text-center">
             {% if user.is_staff %}
             <div class="row text-center">
-                <h2 class="custom-header">EDITING GAME:</h2>
+                <h2 class="custom-header">DELETE GAME:</h2>
             </div>
+            <h2 class="header-custom text-center"><strong>Delete {{game.title}}?</strong></h2>
             <hr class="hr-medium">
-            <form action="" method="POST">
+            <form method="POST">
                 <!-- {{ comment_form | crispy }} -->
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" class="btn btn-success btn-lg" value="SUBMIT CHANGES">
+                <input type="submit" class="btn btn-danger btn-lg" value="YUP, DELETE IT!">
+                <a href="{% url 'game_detail' slug=slugify(object.title) %}">Cancel</a>
             </form>
             {% else %}
             <p>Please <a href="#" class="template-link"><strong>request to join the team</strong> </a>

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic, View
 from .forms import CustomUserCreationForm, GameForm, CommentForm
 from .models import Game, Rating, Comment, CustomUser
@@ -176,3 +176,8 @@ class GameUpdateView(UpdateView):
     def get_success_url(self):
         current_slug = slugify(self.object)
         return reverse('game_detail', kwargs={'slug': current_slug})
+
+
+class GameDeleteView(DeleteView):
+    model = Game
+    success_url = reverse_lazy('index')

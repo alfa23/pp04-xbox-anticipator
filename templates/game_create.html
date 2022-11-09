@@ -15,13 +15,14 @@
                 <!-- {{ comment_form | crispy }} -->
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" class="btn btn-success" value="ADD GAME">
+                <input type="submit" class="btn btn-success btn-lg" value="ADD GAME">
             </form>
             {% else %}
             <p>Please <a href="#" class="template-link"><strong>request to join the team</strong> </a>
                 for the ability to add forthcoming Xbox games to the database.
             </p>
             {% endif %}
+            <br>
         </div>
     </div>
 </div>
