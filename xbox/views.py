@@ -37,19 +37,23 @@ class GameDetail(View):
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
         """ User rating """
-        # print("DEBUGGING")
-
-        ratings = Rating.objects.filter(game=game).all()
-        if ratings.filter(user=self.request.user).exists():
-            current_user_rating = ratings.filter(user=self.request.user)
+        print("DEBUGGING VIEWS A")
+        if request.user.is_authenticated:
+            ratings = Rating.objects.filter(game=game).all()
+            if ratings.filter(user=self.request.user).exists():
+                current_user_rating = ratings.filter(user=self.request.user)
+                # current_user_rating = list(ratings.filter(
+                #     user=self.request.user).values_list(flat=True))
+            else:
+                current_user_rating = 0
         else:
             current_user_rating = 0
 
-        # print(game)
-        # print(ratings)
-        # print(current_user_rating)
+        print(game)
+        print(ratings)
+        print(current_user_rating)
 
-        """ Calculate average game rating """
+        """ Calculate average game rating and round to 1dp """
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()
@@ -60,18 +64,11 @@ class GameDetail(View):
             rating_raw = rating_total / rating_count    # Calculate raw average
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
-            # rating = 0
             rating_rounded = 0
-        liked = False
+
+        # liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
         #     liked = True
-
-        print("DEBUGGING-2")
-
-        print(game)
-        print(slug)
-        print(game.slug)
-        # print(current_user_rating)
 
         return render(
             request,
@@ -82,9 +79,9 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': False,
                 'comment_form': CommentForm(),
-                'liked': liked,
-                # 'rating': rating,
+                # 'liked': liked,
                 'rating_rounded': rating_rounded,
+                'current_user_rating': current_user_rating,
             }
         )
 
@@ -93,10 +90,12 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
+
         """ Calculate average game rating """
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()
+
         for _rating in ratings:
             rating_total += _rating.rate
             rating_count += 1
@@ -104,18 +103,16 @@ class GameDetail(View):
             rating_raw = rating_total / rating_count    # Calculate raw average
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
-            # rating = 0
             rating_rounded = 0
-        liked = False
+
+        # liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
         #     liked = True
 
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
-            # user_id = request.user.id
             comment_form.instance.email = request.user.email
-            # comment_form.instance.name = user_id
             comment = comment_form.save(commit=False)
             comment.game = game
             comment.user = request.user
@@ -133,8 +130,7 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': True,
                 'comment_form': CommentForm(),
-                'liked': liked,
-                # 'rating': rating,
+                # 'liked': liked,
                 'rating_rounded': rating_rounded
             }
         )

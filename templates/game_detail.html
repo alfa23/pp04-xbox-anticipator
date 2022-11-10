@@ -37,7 +37,6 @@
                     {{ game.game_info | safe }}
                 </p>
                 <div class="row">
-
                     <div class="col-1">
                         <!-- The number of users commenting -->
                         <strong class="text-secondary"><i class="far fa-user"></i> {{ game.number_of_commenters }}
@@ -59,8 +58,26 @@
             <hr>
         </div>
     </div>
+    {% if user.is_authenticated %}
+
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col card mb-4  mt-3">
+            <div class="card-body">
+                <p class="card-text ">
+                    Your current rating: {{ current_user_rating }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3">
             <div class="card-body">
                 <h3 class="custom-header">Comments:</h3>
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
@@ -102,7 +119,8 @@
                 <form method="POST" class="comment-box">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button class="btn btn-custom custom-header-rev btn-sm" type="submit" style="margin-top: 0.5rem;">Submit</button>
+                    <button class="btn btn-custom custom-header-rev btn-sm" type="submit"
+                        style="margin-top: 0.5rem;">Submit</button>
                 </form>
                 {% endif %}
                 {% endif %}
