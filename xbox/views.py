@@ -37,11 +37,13 @@ class GameDetail(View):
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
         """ User rating """
-        print("DEBUGGING VIEWS A")
+        print("DEBUGGING: VIEWS A")
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
             if ratings.filter(user=self.request.user).exists():
-                current_user_rating = ratings.filter(user=self.request.user)
+                current_user_queryset = ratings.filter(user=self.request.user)
+                # https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset:
+                current_user_rating = current_user_queryset[0]
                 # current_user_rating = list(ratings.filter(
                 #     user=self.request.user).values_list(flat=True))
             else:
@@ -49,11 +51,17 @@ class GameDetail(View):
         else:
             current_user_rating = 0
 
+        context = {
+            'current_user_rating': current_user_rating
+        }
+
         print(game)
         print(ratings)
         print(current_user_rating)
+        print("END DEBUG VIEWS A")
 
         """ Calculate average game rating and round to 1dp """
+        # """ INITIAL METHOD (WORKS) """
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()
@@ -65,6 +73,30 @@ class GameDetail(View):
             rating_rounded = round(rating_raw, 1)       # and round to 1dp
         else:
             rating_rounded = 0
+
+        # print("DEBUGGING: VIEWS B")
+        # """ MARCEL METHOD (Returns Tuple error) """
+        # if not request.user.is_authenticated:
+        #     return ()   # Bad request
+        # ratings = Rating.objects.filter(game=game, user=request.user).all()
+        # rating_raw = 0
+        # rating_total = 0
+        # rating_count = 0
+        # for _rating in ratings:
+        #     rating_total += _rating.rate
+        #     rating_count += 1
+        # if rating_count > 0:
+        #     rating_raw = rating_total / rating_count    # Calculate raw average
+        #     rating_rounded = round(rating_raw, 1)       # and round to 1dp
+        # context = {
+        #     'rating_rounded': rating_rounded
+        # }
+        # return ()   # positive repsonse
+
+        # print(game)
+        # print(ratings)
+        # print(rating_rounded)
+        # print("END DEBUG VIEWS B")
 
         # liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
@@ -163,7 +195,14 @@ class GameCreateView(CreateView):
 
 class GameUpdateView(UpdateView):
     model = Game
-    form_class = GameForm
+    fields = [
+        'dev_pub',
+        'release_date',
+        'website',
+        'game_info',
+        'info_excerpt',
+        'feature_image'
+    ]
     template_name = 'game_update.html'
 
     def get_success_url(self):

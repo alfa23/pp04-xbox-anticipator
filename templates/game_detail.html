@@ -61,11 +61,17 @@
     {% if user.is_authenticated %}
 
     <div class="row">
-        <div class="col card mb-4  mt-3">
-            <div class="card-body">
-                <p class="card-text ">
-                    Your current rating: {{ current_user_rating }}
-                </p>
+        <div class="col-md-8 card mb-4 mt-3">
+            <div class="card-body text-center">
+                <h3 class="card-text" id="messages">
+                    <em>Your current rating for <strong>{{game.title}}</strong> is:</em>
+                    <strong>{{ current_user_rating }}</strong>
+                </h3>
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body" id="handle1">
+    
             </div>
         </div>
     </div>
