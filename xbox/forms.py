@@ -4,8 +4,8 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from allauth.account.forms import SignupForm
 from django import forms
-from django.forms.widgets import DateInput
-from .models import CustomUser, Game, Comment
+from django.forms.widgets import DateInput, NumberInput
+from .models import CustomUser, Game, Comment, Rating
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -70,3 +70,40 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content', ]
+
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['rate', ]
+        widgets = {
+            'rate': NumberInput(attrs={'type': 'range'}),
+        }
+
+
+# class RatingForm(forms.Form):
+#     rate = forms.DecimalField(
+#         required=True,
+#         label=False,
+#         widget=forms.TextInput(
+#             attrs={
+#                 'step': '0.1',
+#                 'type': 'range',
+#                 'value': '0.5',
+#                 'min': '0',
+#                 'max': '5',
+#             }
+#         )
+#     )
+
+
+# def decimalfield_widget_attrs(self):
+#     f = DecimalField(
+#         widget=NumberInput(
+#             attrs={'step': 0.01, 'max': 5.0, 'min': 0.0}
+#         )
+#     )
+#     self.assertWidgetRendersTo(
+#         f,
+#         '<input step="0.01" name="f" min="0.0" max="5.0" type="number" id="id-f" required>',
+#     )

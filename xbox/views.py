@@ -8,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic, View
-from .forms import CustomUserCreationForm, GameForm, CommentForm
+from .forms import CustomUserCreationForm, GameForm, CommentForm, RatingForm
 from .models import Game, Rating, Comment, CustomUser
 
 

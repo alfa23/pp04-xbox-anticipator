@@ -34,7 +34,7 @@
         <div class="col-md-4 card mb-4 mt-3 left top">
             <div class="card-body">
                 <h3 class="custom-header">Your <span class="brand-reg">X<em
-                    style="font-weight: 400;">A-Rating:</em></h3>
+                    style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating }}</strong></h3>
                 <hr>
                 {% if user.is_authenticated %}
                 <div id="handle1"></div>
@@ -47,6 +47,15 @@
                         </linearGradient>
                     </defs>
                 </svg>
+
+                <!-- <form method="POST" class="comment-box">
+                    {{ rating_form | crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button>
+                </form> -->
+
+                <!-- <div id="id-f"></div> -->
+
                 {% else %}
                 <p>
                     <strong><em>We value your opinion!</em></strong><br>
