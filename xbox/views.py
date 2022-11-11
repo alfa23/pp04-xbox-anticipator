@@ -37,7 +37,7 @@ class GameDetail(View):
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
         """ User rating """
-        print("DEBUGGING: VIEWS A")
+        # print("DEBUGGING: VIEWS A")
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
             if ratings.filter(user=self.request.user).exists():
@@ -55,10 +55,10 @@ class GameDetail(View):
             'current_user_rating': current_user_rating
         }
 
-        print(game)
-        print(ratings)
-        print(current_user_rating)
-        print("END DEBUG VIEWS A")
+        # print(game)
+        # print(ratings)
+        # print(current_user_rating)
+        # print("END DEBUG VIEWS A")
 
         """ Calculate average game rating and round to 1dp """
         # """ INITIAL METHOD (WORKS) """

@@ -21,6 +21,13 @@ body {
     color: #0e7a0d;
 }
 
+.brand-reg {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #0e7a0d;
+}
+
 .brand-reverse {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
