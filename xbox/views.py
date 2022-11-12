@@ -27,6 +27,12 @@ class GameList(generic.ListView):
     template_name = 'index.html'
     paginate_by = 6
 
+    print("DEBUGGING: VIEWS GL")
+    print(queryset)
+    # print()
+    # print()
+    print("END DEBUG VIEWS GL")
+
 
 class GameDetail(View):
 
@@ -36,16 +42,14 @@ class GameDetail(View):
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
-        # print("DEBUGGING: VIEWS A")
+        # print("DEBUGGING: VIEWS UR")
         """ User rating """
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
             if ratings.filter(user=self.request.user).exists():
-                current_user_queryset = ratings.filter(user=self.request.user)
                 # https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset:
+                current_user_queryset = ratings.filter(user=self.request.user)
                 current_user_rating = current_user_queryset[0]
-                # current_user_rating = list(ratings.filter(
-                #     user=self.request.user).values_list(flat=True))
             else:
                 current_user_rating = 0
         else:
@@ -58,7 +62,7 @@ class GameDetail(View):
         # print(game)
         # print(ratings)
         # print(current_user_rating)
-        # print("END DEBUG VIEWS A")
+        # print("END DEBUG VIEWS UR")
 
         """ Calculate average game rating and round to 1dp """
         # """ INITIAL METHOD (WORKS) """
@@ -74,7 +78,7 @@ class GameDetail(View):
         else:
             rating_rounded = 0
 
-        # print("DEBUGGING: VIEWS B")
+        # print("DEBUGGING: VIEWS AR")
         # """ MARCEL METHOD (Returns Tuple error) """
         # if not request.user.is_authenticated:
         #     return ()   # Bad request
@@ -96,7 +100,7 @@ class GameDetail(View):
         # print(game)
         # print(ratings)
         # print(rating_rounded)
-        # print("END DEBUG VIEWS B")
+        # print("END DEBUG VIEWS AR")
 
         # liked = False
         # if request.comment.likes.filter(id=self.request.user.id).exists():
@@ -188,7 +192,6 @@ class GameCreateView(CreateView):
         f.user = self.request.user
         f.creator = self.request.user
         f.save()
-
         return super(GameCreateView, self).form_valid(form)
 
     def form_invalid(self, form):

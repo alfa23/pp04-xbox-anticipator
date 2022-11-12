@@ -31,7 +31,7 @@ body {
 .brand-reverse {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #F9FAFC;
 }
 
@@ -97,6 +97,15 @@ body {
     margin-bottom: 10px;
 }
 
+.hr-rev {
+    width: 66%;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    height: 0px;
+    border: none;
+    border-top: 3px solid #F9FAFC;
+}
+
 .hr-small {
     width: 33%;
     margin: auto;
@@ -119,7 +128,7 @@ body {
 }
 
 .masthead {
-    margin-top: 10px;
+    margin-top: 15px;
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -163,7 +172,7 @@ body {
 }
 
 .game-title {
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 5%;
 }
 

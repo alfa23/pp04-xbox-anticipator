@@ -7,8 +7,10 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="game-title">{{ game.title }}</h1>
-                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }} | <span class="brand-reverse">X<em
-                            style="font-weight: 400;">A-Rating:</em> {{ rating_rounded }}</span></p>
+                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }}</p>
+                <hr class="hr-rev">
+                <p class="game-subtitle"><span class="brand-reverse"><em style="font-weight: 400;">Average </em>
+                    X<em style="font-weight: 400;">A-Rating:</em> {{ rating_rounded }}</span></p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in game.feature_image.url %}
@@ -49,14 +51,11 @@
                         </linearGradient>
                     </defs>
                 </svg>
-
-                <!-- <form method="POST" class="comment-box">
-                    {{ rating_form | crispy }}
+                <form method="POST" class="comment-box">
                     {% csrf_token %}
+                    {{ rating_form | crispy }}
                     <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button>
-                </form> -->
-
-
+                </form>
                 {% else %}
                 <p>
                     <strong><em>We value your opinion!</em></strong><br>
@@ -122,8 +121,8 @@
                 <hr>
                 <p>Commenting as: {{ user.first_name }}</p>
                 <form method="POST" class="comment-box">
-                    {{ comment_form | crispy }}
                     {% csrf_token %}
+                    {{ comment_form | crispy }}
                     <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Submit</button>
                 </form>
                 {% else %}
@@ -132,8 +131,8 @@
                 <hr>
                 <p>Commenting as: {{ user.first_name }}</p>
                 <form method="POST" class="comment-box">
-                    {{ comment_form | crispy }}
                     {% csrf_token %}
+                    {{ comment_form | crispy }}
                     <button class="btn btn-custom custom-header-rev btn-sm" type="submit"
                         style="margin-top: 0.5rem;">Submit</button>
                 </form>
