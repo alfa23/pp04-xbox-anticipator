@@ -76,9 +76,9 @@ class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ['rate', ]
-        widgets = {
-            'rate': NumberInput(attrs={'type': 'range'}),
-        }
+        # widgets = {
+        #     'rate': NumberInput,
+        # }
 
 
 # class RatingForm(forms.Form):
@@ -94,16 +94,4 @@ class RatingForm(forms.ModelForm):
 #                 'max': '5',
 #             }
 #         )
-#     )
-
-
-# def decimalfield_widget_attrs(self):
-#     f = DecimalField(
-#         widget=NumberInput(
-#             attrs={'step': 0.01, 'max': 5.0, 'min': 0.0}
-#         )
-#     )
-#     self.assertWidgetRendersTo(
-#         f,
-#         '<input step="0.01" name="f" min="0.0" max="5.0" type="number" id="id-f" required>',
 #     )

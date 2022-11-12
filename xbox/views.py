@@ -4,7 +4,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.contrib.messages.views import SuccessMessageMixin
+# from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic, View
@@ -36,8 +36,8 @@ class GameDetail(View):
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
-        """ User rating """
         # print("DEBUGGING: VIEWS A")
+        """ User rating """
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
             if ratings.filter(user=self.request.user).exists():
@@ -86,8 +86,8 @@ class GameDetail(View):
         #     rating_total += _rating.rate
         #     rating_count += 1
         # if rating_count > 0:
-        #     rating_raw = rating_total / rating_count    # Calculate raw average
-        #     rating_rounded = round(rating_raw, 1)       # and round to 1dp
+        #     rating_raw = rating_total / rating_count  # Calculate raw average
+        #     rating_rounded = round(rating_raw, 1)     # and round to 1dp
         # context = {
         #     'rating_rounded': rating_rounded
         # }
@@ -122,6 +122,9 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
+
+        # !!!! ADD UPDATED USER RATINGS CODE HERE WHEN COMPLETE !!!
+        # """ User rating """
 
         """ Calculate average game rating """
         rating_total = 0
@@ -213,5 +216,10 @@ class GameUpdateView(UpdateView):
 
 class GameDeleteView(DeleteView):
     model = Game
-    success_message = 'Game data deleted successfully'
     success_url = reverse_lazy('index')
+    success_message = 'Game data deleted successfully'
+
+    # Add success message method: https://stackoverflow.com/questions/24822509/
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(GameDeleteView, self).delete(request, *args, **kwargs)

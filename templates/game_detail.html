@@ -33,10 +33,12 @@
     <div class="row">
         <div class="col-md-4 card mb-4 mt-3 left top">
             <div class="card-body">
+                <!-- https://stackoverflow.com/questions/298772/django-template-variables-and-javascript -->
                 <h3 class="custom-header">Your <span class="brand-reg">X<em
                     style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating | safe }}</strong></h3>
                 <hr>
                 {% if user.is_authenticated %}
+                <!-- https://stackoverflow.com/questions/68063119/how-to-store-the-value-of-circular-slider-in-a-variable-and-display-it-in-consol -->
                 <div id="handle1" onchange="getValue(this)"></div>
                 <svg height="0" width="0">
                     <defs>
@@ -54,7 +56,6 @@
                     <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button>
                 </form> -->
 
-                <!-- <div id="id-f"></div> -->
 
                 {% else %}
                 <p>
@@ -82,39 +83,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-
-    <!-- {% if user.is_authenticated %}
-    <div class="row">
-        <div class="col-md-8 card mb-4 mt-3">
-            <div class="card-body text-center">
-                <h3 class="card-text" id="messages">
-                    <em>Your current rating for <strong>{{game.title}}</strong> is:</em>
-                    <strong>{{ current_user_rating }}</strong>
-                </h3>
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4 mt-3">
-            <div class="card-body">
-                <div id="handle1"></div>
-
-                <svg height="0" width="0">
-                    <defs>
-                        <linearGradient id="slider1_range_grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#0e7a0d;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#fab12a;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#E84610;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-        </div>
     </div>
 
     <div class="row">
@@ -122,10 +90,9 @@
             <hr>
         </div>
     </div>
-    {% endif %} -->
 
     <div class="row">
-        <div class="col-md-8 card mb-4 mt-3">
+        <div class="col-lg-8 card mb-4 mt-3">
             <div class="card-body">
                 <h3 class="custom-header">Comments:</h3>
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
@@ -148,7 +115,7 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
+        <div class="col-lg-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if commented %}
                 <h3 class="custom-header">Post a comment:</h3>
