@@ -146,14 +146,14 @@
     });
 
     function changeTooltip(e) {
-        var val = e.value, speed;
-        if (val < 1) speed = "COLD";
-        else if (val < 2) speed = "TEPID";
-        else if (val < 3) speed = "WARM";
-        else if (val < 4) speed = "HOT";
-        else speed = "SCORCHING!";
+        var val = e.value, temp;
+        if (val < 1) temp = "COLD";
+        else if (val < 2) temp = "TEPID";
+        else if (val < 3) temp = "WARM";
+        else if (val < 4) temp = "HOT";
+        else temp = "SCORCHING!";
 
-        return val + "<div>" + speed + "<div>";
+        return val + "<div>" + temp + "<div>";
     }
 
     function traceEvent(e) {
@@ -162,8 +162,19 @@
         console.log(val);
     }
 
-    $("#handle1").roundSlider("option", "value", 5);
-    console.log(self.current_user_rating)
+    // https://stackoverflow.com/questions/298772/django-template-variables-and-javascript
+    const initUserRate = '{{ current_user_rating }}';
+    console.log(initUserRate);
+    // console.log(myrate);
+
+    $("#handle1").roundSlider("option", "value", initUserRate);
+    
+    // https://stackoverflow.com/questions/68063119/how-to-store-the-value-of-circular-slider-in-a-variable-and-display-it-in-consol
+    const getValue = (e) => {
+        let newUserRate = e.textContent.split('°')[0];
+        console.log(newUserRate);
+        console.log(e.textContent);
+    }
 
     </script>
 

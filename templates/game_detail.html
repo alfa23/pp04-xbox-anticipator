@@ -34,10 +34,10 @@
         <div class="col-md-4 card mb-4 mt-3 left top">
             <div class="card-body">
                 <h3 class="custom-header">Your <span class="brand-reg">X<em
-                    style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating }}</strong></h3>
+                    style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating | safe }}</strong></h3>
                 <hr>
                 {% if user.is_authenticated %}
-                <div id="handle1"></div>
+                <div id="handle1" onchange="getValue(this)"></div>
                 <svg height="0" width="0">
                     <defs>
                         <linearGradient id="slider1_range_grad" x1="0%" y1="0%" x2="100%" y2="0%">
