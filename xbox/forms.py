@@ -82,9 +82,9 @@ class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ['rate', ]
-        # widgets = {
-        #     'rate': NumberInput,
-        # }
+        widgets = {
+            'rate': NumberInput,
+        }
 
 
 # class RatingForm(forms.Form):

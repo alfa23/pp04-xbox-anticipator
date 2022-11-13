@@ -12,8 +12,8 @@
             <p>Click on a game to find out more and leave an anticipation rating or comment.</p>
             {% else %}
             <p>Please <a href="{% url 'account_signup' %}" class="template-link"><strong>register</strong> </a>or
-                <a href="{% url 'account_login' %}" class="template-link"><strong>sign in</strong></a> to leave an anticipation
-                rating or comment.
+                <a href="{% url 'account_login' %}" class="template-link"><strong>sign in</strong></a> to leave anticipation
+                ratings and comments.
             </p>
             {% endif %}
             {% if user.is_staff %}
@@ -40,20 +40,19 @@
                                 {% else %}
                                 <img class="card-img-top" src=" {{ game.feature_image.url }} ">
                                 {% endif %}
-                                <div class="image-flash">
-                                    <p class="rating"><span class="brand">X<em style="font-weight: 400;">A-Rating:</em></span> {{ rating_rounded }}</p>
-                                </div>
                             </div>
+                            <hr>
                             <a href="{% url 'game_detail' game.slug %}" class="game-link">
                                 <h3 class="card-title">{{ game.title }}</h3>
+                                <hr>
                                 <p class="card-text">{{ game.info_excerpt }}</p>
                             </a>
                             <hr>
                             <h6 class="card-subtitle">Release Date: {{ game.release_date }}</h6>
                             <hr>
                             <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
-                            <hr>
-                            <p class="card-text"><i class="far fa-user">&nbsp;</i><i class="far fa-comment"></i> {{ game.number_of_commenters }}</p>
+                            <!-- <hr>
+                            <p class="card-text"><i class="far fa-comment"></i> {{ game.number_of_commenters }}</p> -->
                         </div>
                     </div>
                 </div>
@@ -69,10 +68,10 @@
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-custom custom-header-rev">&laquo; PREV &laquo;</a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-custom custom-header-rev">&raquo; NEXT &raquo;</a></li>
 
             {% endif %}
         </ul>

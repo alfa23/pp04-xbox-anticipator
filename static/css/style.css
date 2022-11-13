@@ -221,3 +221,7 @@ body {
 #handle1 .rs-path-color  {
     background-color: #F0C5C5;
 }
+
+#div_id_rate {
+    display: none;
+}

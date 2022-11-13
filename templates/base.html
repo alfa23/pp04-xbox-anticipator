@@ -44,13 +44,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Games</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a>
                     </li>
@@ -73,7 +67,7 @@
                 {% for message in messages %}
                 <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
                     {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
                 </div>
                 {% endfor %}
             </div>
@@ -112,7 +106,7 @@
             let messages = document.getElementById("msg");
             let alert = new bootstrap.Alert(messages);
             alert.close();
-        }, 3000);
+        }, 1700);
     </script>
 
     <script>
@@ -163,14 +157,15 @@
     }
 
     function traceEvent(e) {
-            var val = e.value
-        console.log(e.type);
+        var val = e.value;
+        // console.log(e.type);
         console.log(val);
+        document.getElementById('id_rate').value = val;
     }
 
     // https://stackoverflow.com/questions/298772/django-template-variables-and-javascript
     const initUserRate = '{{ current_user_rating }}';
-    console.log(initUserRate);
+    // console.log(initUserRate);
     // console.log(myrate);
 
     $("#handle1").roundSlider("option", "value", initUserRate);
@@ -178,8 +173,8 @@
     // https://stackoverflow.com/questions/68063119/how-to-store-the-value-of-circular-slider-in-a-variable-and-display-it-in-consol
     const getValue = (e) => {
         let newUserRate = e.textContent.split('°')[0];
-        console.log(newUserRate);
-        console.log(e.textContent);
+        // console.log(newUserRate);
+        // console.log(e.textContent);
     }
 
     </script>

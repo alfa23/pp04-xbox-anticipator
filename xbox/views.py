@@ -26,34 +26,6 @@ class GameList(generic.ListView):
     queryset = Game.objects.filter(status=1).order_by('release_date')
     template_name = 'index.html'
     paginate_by = 6
-    # context_object_name = 'games_list'
-
-    # print("DEBUGGING: VIEWS GL")
-    # """ Average Game Rating for ListView """
-    # slug = slugify(queryset[0])
-    # game = get_object_or_404(queryset, slug=slug)
-    # rating_total = 0
-    # rating_count = 0
-    # ratings = Rating.objects.filter(game=game).all()
-    # for _rating in ratings:
-    #     rating_total += _rating.rate
-    #     rating_count += 1
-    # if rating_count > 0:
-    #     rating_raw = rating_total / rating_count    # Calculate raw average
-    #     rating_rounded = round(rating_raw, 1)       # and round to 1dp
-    # else:
-    #     rating_rounded = 0
-
-    # context = {
-    #     'rating_rounded': rating_rounded
-    # }
-
-    # print(queryset)
-    # print(slug)
-    # print(game)
-    # print(ratings)
-    # print(rating_rounded)
-    # print("END DEBUG VIEWS GL")
 
 
 class GameDetail(View):
@@ -64,7 +36,6 @@ class GameDetail(View):
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
-        # print("DEBUGGING: VIEWS UR")
         """ User rating """
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
@@ -77,17 +48,7 @@ class GameDetail(View):
         else:
             current_user_rating = 0
 
-        context = {
-            'current_user_rating': current_user_rating
-        }
-
-        # print(game)
-        # print(ratings)
-        # print(current_user_rating)
-        # print("END DEBUG VIEWS UR")
-
         """ Calculate average game rating and round to 1dp """
-        # """ INITIAL METHOD (WORKS) """
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()
@@ -100,30 +61,6 @@ class GameDetail(View):
         else:
             rating_rounded = 0
 
-        # print("DEBUGGING: VIEWS AR")
-        # """ MARCEL METHOD (Returns Tuple error) """
-        # if not request.user.is_authenticated:
-        #     return ()   # Bad request
-        # ratings = Rating.objects.filter(game=game, user=request.user).all()
-        # rating_raw = 0
-        # rating_total = 0
-        # rating_count = 0
-        # for _rating in ratings:
-        #     rating_total += _rating.rate
-        #     rating_count += 1
-        # if rating_count > 0:
-        #     rating_raw = rating_total / rating_count  # Calculate raw average
-        #     rating_rounded = round(rating_raw, 1)     # and round to 1dp
-        # context = {
-        #     'rating_rounded': rating_rounded
-        # }
-        # return ()   # positive repsonse
-
-        # print(game)
-        # print(ratings)
-        # print(rating_rounded)
-        # print("END DEBUG VIEWS AR")
-
         return render(
             request,
             'game_detail.html',
@@ -133,6 +70,7 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': False,
                 'comment_form': CommentForm(),
+                'rating_form': RatingForm(),
                 'rating_rounded': rating_rounded,
                 'current_user_rating': current_user_rating,
             }
@@ -144,25 +82,7 @@ class GameDetail(View):
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
-        # !!!! ADD UPDATED USER RATINGS CODE HERE WHEN COMPLETE !!!
-        # """ User rating """
-
-        """ Calculate average game rating """
-        rating_total = 0
-        rating_count = 0
-        ratings = Rating.objects.filter(game=game).all()
-
-        for _rating in ratings:
-            rating_total += _rating.rate
-            rating_count += 1
-        if rating_count > 0:
-            rating_raw = rating_total / rating_count    # Calculate raw average
-            rating_rounded = round(rating_raw, 1)       # and round to 1dp
-        else:
-            rating_rounded = 0
-
         comment_form = CommentForm(data=request.POST)
-
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
             comment = comment_form.save(commit=False)
@@ -173,6 +93,47 @@ class GameDetail(View):
         else:
             comment_form = CommentForm()
 
+        """ Set or update user rating """
+        current_user_rating = 0
+        if request.POST.get('rate'):
+            existing_user_rating = Rating.objects.filter(
+                game=game,
+                user=request.user,
+            ).first()
+            if existing_user_rating:
+                existing_user_rating.rate = request.POST.get('rate')
+                current_user_rating = existing_user_rating.rate
+                existing_user_rating.save()
+            else:
+                current_user_rating = Rating(
+                    game=game,
+                    user=request.user,
+                    rate=request.POST.get('rate')
+                ).save()
+            messages.success(request, 'Rating posted successfully!')
+
+        """ User rating """
+        ratings = Rating.objects.filter(game=game).all()
+        if ratings.filter(user=self.request.user).exists():
+            # https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset:
+            current_user_queryset = ratings.filter(user=self.request.user)
+            current_user_rating = current_user_queryset[0]
+        else:
+            current_user_rating = 0
+
+        """ Calculate average game rating """
+        rating_total = 0
+        rating_count = 0
+        ratings = Rating.objects.filter(game=game).all()
+        for _rating in ratings:
+            rating_total += _rating.rate
+            rating_count += 1
+        if rating_count > 0:
+            rating_raw = rating_total / rating_count    # Calculate raw average
+            rating_rounded = round(rating_raw, 1)       # and round to 1dp
+        else:
+            rating_rounded = 0
+
         return render(
             request,
             'game_detail.html',
@@ -182,7 +143,9 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': True,
                 'comment_form': CommentForm(),
-                'rating_rounded': rating_rounded
+                'rating_form': RatingForm(),
+                'rating_rounded': rating_rounded,
+                'current_user_rating': current_user_rating,
             }
         )
 
