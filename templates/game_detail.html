@@ -7,7 +7,7 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <h1 class="game-title">{{ game.title }}</h1>
-                <p class="game-subtitle">{{ game.dev_pub }} | {{ game.release_date }}</p>
+                <p class="game-subtitle">{{ game.release_date }} | {{ game.dev_pub }}</p>
                 <hr class="hr-rev">
                 <p class="game-subtitle"><span class="brand-reverse"><em style="font-weight: 400;">Average </em>
                     X<em style="font-weight: 400;">A-Rating:</em> {{ rating_rounded }}</span></p>
@@ -36,7 +36,7 @@
         <div class="col-md-4 card mb-4 mt-3 left top">
             <div class="card-body">
                 <!-- https://stackoverflow.com/questions/298772/django-template-variables-and-javascript -->
-                <h3 class="custom-header">Your <span class="brand-reg">X<em
+                <h3 class="custom-header"><em style="font-weight: 400;">Your </em><span class="brand-reg">X<em
                     style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating | safe }}</strong></h3>
                 <hr>
                 {% if user.is_authenticated %}
@@ -51,11 +51,11 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                <form method="POST" class="comment-box">
-                    {% csrf_token %}
-                    {{ rating_form | crispy }}
-                    <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button>
-                </form>
+                <!-- <form method="POST" class="comment-box"> -->
+                    <!-- {% csrf_token %}
+                    {{ rating_form | crispy }} -->
+                    <!-- <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button> -->
+                <!-- </form> -->
                 {% else %}
                 <p>
                     <strong><em>We value your opinion!</em></strong><br>
@@ -71,6 +71,15 @@
                 <p class="card-text ">
                     {{ game.game_info | safe }}
                 </p>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <strong class="text-secondary"><i class="fas fa-globe"></i>
+                            <a href="{{ game.website }}" class="template-link" target="_blank">
+                                 {{ game.website }}</a></strong>
+                    </div>
+                </div>
+                <hr>
                 <div class="row">
                     <div class="col">
                         {% with comments.count as total_comments %}

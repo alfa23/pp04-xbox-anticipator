@@ -1,11 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
-<!-- {% load crispy_forms_tags %} -->
+{% load crispy_forms_tags %}
 
 <div class="container-fluid">
     <div class="row">
         <img src="https://res.cloudinary.com/alfa23/image/upload/v1667615192/media/xbox-2022_la8fmu.png" class="img-fluid" alt="image of green xbox logo">
-        <div class="col-lg-10 mt-3 offset-lg-1 text-center">
+        <div class="col-lg-8 mt-3 offset-lg-2 text-center">
             {% if user.is_staff %}
             <div class="row text-center">
                 <h1 class="custom-header">EDITING {{game.title}} DATA:</h1>
@@ -14,7 +14,8 @@
             <form action="" method="POST">
                 <!-- {{ comment_form | crispy }} -->
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
+                <br>
                 <input type="submit" class="btn btn-custom btn-lg custom-header-rev" value="SUBMIT CHANGES">
             </form>
             {% else %}

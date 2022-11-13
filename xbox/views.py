@@ -26,12 +26,34 @@ class GameList(generic.ListView):
     queryset = Game.objects.filter(status=1).order_by('release_date')
     template_name = 'index.html'
     paginate_by = 6
+    # context_object_name = 'games_list'
 
-    print("DEBUGGING: VIEWS GL")
-    print(queryset)
-    # print()
-    # print()
-    print("END DEBUG VIEWS GL")
+    # print("DEBUGGING: VIEWS GL")
+    # """ Average Game Rating for ListView """
+    # slug = slugify(queryset[0])
+    # game = get_object_or_404(queryset, slug=slug)
+    # rating_total = 0
+    # rating_count = 0
+    # ratings = Rating.objects.filter(game=game).all()
+    # for _rating in ratings:
+    #     rating_total += _rating.rate
+    #     rating_count += 1
+    # if rating_count > 0:
+    #     rating_raw = rating_total / rating_count    # Calculate raw average
+    #     rating_rounded = round(rating_raw, 1)       # and round to 1dp
+    # else:
+    #     rating_rounded = 0
+
+    # context = {
+    #     'rating_rounded': rating_rounded
+    # }
+
+    # print(queryset)
+    # print(slug)
+    # print(game)
+    # print(ratings)
+    # print(rating_rounded)
+    # print("END DEBUG VIEWS GL")
 
 
 class GameDetail(View):
@@ -102,10 +124,6 @@ class GameDetail(View):
         # print(rating_rounded)
         # print("END DEBUG VIEWS AR")
 
-        # liked = False
-        # if request.comment.likes.filter(id=self.request.user.id).exists():
-        #     liked = True
-
         return render(
             request,
             'game_detail.html',
@@ -115,7 +133,6 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': False,
                 'comment_form': CommentForm(),
-                # 'liked': liked,
                 'rating_rounded': rating_rounded,
                 'current_user_rating': current_user_rating,
             }
@@ -144,10 +161,6 @@ class GameDetail(View):
         else:
             rating_rounded = 0
 
-        # liked = False
-        # if request.comment.likes.filter(id=self.request.user.id).exists():
-        #     liked = True
-
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
@@ -169,7 +182,6 @@ class GameDetail(View):
                 'comments': comments,
                 'commented': True,
                 'comment_form': CommentForm(),
-                # 'liked': liked,
                 'rating_rounded': rating_rounded
             }
         )
@@ -179,7 +191,6 @@ class GameCreateView(CreateView):
     model = Game
     form_class = GameForm
     template_name = 'game_create.html'
-    # success_message = '{% game %} data created!'
 
     def get_success_url(self):
         messages.success(self.request, 'Game data created successfully')

@@ -147,10 +147,16 @@
 
     function changeTooltip(e) {
         var val = e.value, temp;
-        if (val < 1) temp = "COLD";
-        else if (val < 2) temp = "TEPID";
+        if (val < 0.5) temp = "FREEZING";
+        else if (val < 1) temp = "COLD";
+        else if (val < 1.5) temp = "CHILLY";
+        else if (val < 2) temp = "COOL";
+        else if (val < 2.5) temp = "TEPID";
         else if (val < 3) temp = "WARM";
+        else if (val < 3.5) temp = "TOASTY";
         else if (val < 4) temp = "HOT";
+        else if (val < 4.5) temp = "STEAMING";
+        else if (val < 5) temp = "SIZZLING";
         else temp = "SCORCHING!";
 
         return val + "<div>" + temp + "<div>";
