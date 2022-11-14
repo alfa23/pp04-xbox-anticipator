@@ -1,6 +1,3 @@
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
-
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User
 from django.db import models
 from django.utils import timezone
@@ -12,6 +9,9 @@ from django.db.models import CheckConstraint, Q, UniqueConstraint
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
+
+# Custom User Model process referenced from:
+# https://testdriven.io/blog/django-custom-user-model/
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
@@ -29,6 +29,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
 
 # Xbox Anticipator code - models:
 
@@ -55,9 +56,6 @@ class Game(models.Model):
 
     def __str__(self):
         return self.title
-
-    def number_of_commenters(self):
-        return self.commenters_tally.count()
 
 
 class Rating(models.Model):

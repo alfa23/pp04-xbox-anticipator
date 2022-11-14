@@ -1,11 +1,11 @@
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
-
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from allauth.account.forms import SignupForm
 from django import forms
 from django.forms.widgets import DateInput, NumberInput
 from .models import CustomUser, Game, Comment, Rating
+
+# Custom User Model process referenced from:
+# https://testdriven.io/blog/django-custom-user-model/
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -45,12 +45,9 @@ class CustomSignupForm(SignupForm):
         user.save()
         return user
 
+
 # DateInput CBV created to enable date picker in Django, sourced from:
 # https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django
-
-
-# class DateInput(forms.DateInput):
-#     input_type = 'date'
 
 
 class GameForm(forms.ModelForm):
@@ -82,22 +79,3 @@ class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ['rate', ]
-        widgets = {
-            'rate': NumberInput,
-        }
-
-
-# class RatingForm(forms.Form):
-#     rate = forms.DecimalField(
-#         required=True,
-#         label=False,
-#         widget=forms.TextInput(
-#             attrs={
-#                 'step': '0.1',
-#                 'type': 'range',
-#                 'value': '0.5',
-#                 'min': '0',
-#                 'max': '5',
-#             }
-#         )
-#     )

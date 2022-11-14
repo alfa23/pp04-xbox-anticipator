@@ -12,15 +12,14 @@
             </div>
             <hr class="hr-medium">
             <form action="" method="POST">
-                <!-- {{ comment_form | crispy }} -->
                 {% csrf_token %}
                 {{ form|crispy }}
                 <br>
                 <input type="submit" class="btn btn-custom btn-lg custom-header-rev" value="SUBMIT CHANGES">
             </form>
             {% else %}
-            <p>Please <a href="#" class="template-link"><strong>request to join the team</strong> </a>
-                for the ability to add forthcoming Xbox games to the database.
+            <p>Please contact us via our <a href="http://www.facebook.com/" class="template-link"><strong>Facebook page</strong></a>
+                 and request to join the team for the ability to add forthcoming Xbox games to the database.
             </p>
             {% endif %}
             <br>

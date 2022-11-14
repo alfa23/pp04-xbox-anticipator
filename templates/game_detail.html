@@ -54,7 +54,7 @@
                 <form method="POST" class="comment-box">
                     {% csrf_token %}
                     {{ rating_form | crispy }}
-                    <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Rate!</button>
+                    <button class="btn btn-custom btn-lg custom-header-rev" type="submit">RATE GAME</button>
                 </form>
                 {% else %}
                 <p>
@@ -84,7 +84,6 @@
                     <div class="col">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- total_comments variable -->
                             {{ total_comments }}</strong>
                         {% endwith %}
                     </div>
@@ -103,23 +102,18 @@
         <div class="col-lg-8 card mb-4 mt-3">
             <div class="card-body">
                 <h3 class="custom-header">Comments:</h3>
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 <hr>
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                         {{ comment.user }}
                         <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
                             {{ comment.posted_on }}
                         </span> wrote:
                     </p>
-                    <!-- The body of the comment goes before the | -->
                     {{ comment.content | linebreaks }}
                 </div>
                 <hr>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
@@ -132,7 +126,7 @@
                 <form method="POST" class="comment-box">
                     {% csrf_token %}
                     {{ comment_form | crispy }}
-                    <button class="btn btn-custom" type="submit" style="margin-top: 0.5rem;">Submit</button>
+                    <button class="btn btn-custom custom-header-rev btn-sm" type="submit" style="margin-top: 0.5rem;">POST COMMENT</button>
                 </form>
                 {% else %}
                 {% if user.is_authenticated %}
@@ -143,7 +137,7 @@
                     {% csrf_token %}
                     {{ comment_form | crispy }}
                     <button class="btn btn-custom custom-header-rev btn-sm" type="submit"
-                        style="margin-top: 0.5rem;">Submit</button>
+                        style="margin-top: 1rem;">POST COMMENT</button>
                 </form>
                 {% endif %}
                 {% endif %}

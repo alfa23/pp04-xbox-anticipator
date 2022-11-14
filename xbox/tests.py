@@ -1,8 +1,8 @@
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
-
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+
+# Custom User Model process referenced from:
+# https://testdriven.io/blog/django-custom-user-model/
 
 
 class UsersManagersTests(TestCase):

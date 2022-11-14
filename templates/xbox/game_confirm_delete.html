@@ -1,7 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 
-<!-- {% load crispy_forms_tags %} -->
-
 <div class="container-fluid">
     <div class="row">
         <img src="https://res.cloudinary.com/alfa23/image/upload/v1667615192/media/xbox-2022_la8fmu.png" class="img-fluid" alt="image of green xbox logo">
@@ -10,17 +8,18 @@
             <div class="row text-center">
                 <h1 class="custom-header">DELETE GAME:</h1>
             </div>
-            <h3 class="header-custom text-center"><strong>Delete {{game.title}}?</strong></h3>
+            <h4 class="header-custom text-center"><em>Really delete <strong>{{game.title}}</strong>?</em></h4>
             <hr class="hr-medium">
+            <br>
             <form method="POST">
-                <!-- {{ comment_form | crispy }} -->
                 {% csrf_token %}
                 <input type="submit" class="btn btn-danger btn-lg custom-header-rev" value="YUP, DELETE IT!">
-                <a href="{% url 'game_detail' game.slug %}">Cancel</a>
+                <br>
+                <a href="{% url 'game_detail' game.slug %}"><p style="margin-top: 0.5rem;">Cancel</p></a>
             </form>
             {% else %}
-            <p>Please <a href="#" class="template-link"><strong>request to join the team</strong> </a>
-                for the ability to add forthcoming Xbox games to the database.
+            <p>Please contact us via our <a href="http://www.facebook.com/" class="template-link"><strong>Facebook page</strong></a>
+                and request to join the team for the ability to add forthcoming Xbox games to the database.
             </p>
             {% endif %}
             <br>

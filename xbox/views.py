@@ -1,15 +1,14 @@
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
-
 from django.shortcuts import render, get_object_or_404, reverse
 from django.urls import reverse_lazy
 from django.contrib import messages
-# from django.contrib.messages.views import SuccessMessageMixin
 from django.template.defaultfilters import slugify
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic, View
 from .forms import CustomUserCreationForm, GameForm, CommentForm, RatingForm
 from .models import Game, Rating, Comment, CustomUser
+
+# Custom User Model process referenced from:
+# https://testdriven.io/blog/django-custom-user-model/
 
 
 class SignUpView(CreateView):
@@ -29,14 +28,13 @@ class GameList(generic.ListView):
 
 
 class GameDetail(View):
-
     def get(self, request, slug, *args, **kwargs):
         queryset = Game.objects.filter(status=1)
         game = get_object_or_404(queryset, slug=slug)
         commenters = game.commenters_tally.count()
         comments = game.comments.filter(approved=True).order_by('posted_on')
 
-        """ User rating """
+        '''User rating'''
         if request.user.is_authenticated:
             ratings = Rating.objects.filter(game=game).all()
             if ratings.filter(user=self.request.user).exists():
@@ -48,7 +46,7 @@ class GameDetail(View):
         else:
             current_user_rating = 0
 
-        """ Calculate average game rating and round to 1dp """
+        '''Calculate average game rating and round to 1dp'''
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()
@@ -93,7 +91,7 @@ class GameDetail(View):
         else:
             comment_form = CommentForm()
 
-        """ Set or update user rating """
+        '''Set or update user rating'''
         current_user_rating = 0
         if request.POST.get('rate'):
             existing_user_rating = Rating.objects.filter(
@@ -112,7 +110,7 @@ class GameDetail(View):
                 ).save()
             messages.success(request, 'Rating posted successfully!')
 
-        """ User rating """
+        '''User rating'''
         ratings = Rating.objects.filter(game=game).all()
         if ratings.filter(user=self.request.user).exists():
             # https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset:
@@ -121,7 +119,7 @@ class GameDetail(View):
         else:
             current_user_rating = 0
 
-        """ Calculate average game rating """
+        '''Calculate average game rating'''
         rating_total = 0
         rating_count = 0
         ratings = Rating.objects.filter(game=game).all()

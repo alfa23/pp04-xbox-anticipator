@@ -51,8 +51,6 @@
                             <h6 class="card-subtitle">Release Date: {{ game.release_date }}</h6>
                             <hr>
                             <h6 class="card-subtitle">Developer/Publisher: {{ game.dev_pub }}</h6>
-                            <!-- <hr>
-                            <p class="card-text"><i class="far fa-comment"></i> {{ game.number_of_commenters }}</p> -->
                         </div>
                     </div>
                 </div>
@@ -72,7 +70,6 @@
             {% endif %}
             {% if page_obj.has_next %}
             <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-custom custom-header-rev">&raquo; NEXT &raquo;</a></li>
-
             {% endif %}
         </ul>
     </nav>

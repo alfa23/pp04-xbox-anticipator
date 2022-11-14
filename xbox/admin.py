@@ -1,6 +1,8 @@
 from django.contrib import admin
-# Custom User Model process referenced from:
-# https://testdriven.io/blog/django-custom-user-model/
+'''
+Custom User Model process referenced from:
+https://testdriven.io/blog/django-custom-user-model/
+'''
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
@@ -38,7 +40,7 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-
+    '''Register Game model to admin panel'''
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'game_info', 'release_date']
     list_display = ('title', 'slug', 'status', 'release_date', 'created_date')
@@ -51,7 +53,7 @@ class GameAdmin(admin.ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-
+    '''Register Rating model to admin panel'''
     search_fields = ['game', 'rate', 'user']
     list_display = ('game', 'rate', 'user')
     list_filter = ('game', 'rate', 'user')
@@ -59,7 +61,7 @@ class RatingAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-
+    '''Register Comment model to admin panel'''
     search_fields = ['game', 'content', 'user']
     list_display = ('game', 'content', 'posted_on', 'user', 'approved')
     list_filter = ('game', 'posted_on', 'approved')
