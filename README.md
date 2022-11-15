@@ -1,11 +1,26 @@
 # **XBOX ANTICIPATOR**
 
 ## **INTRODUCTION**
-The aim of this fourth project is to...
+This fourth Portfolio Project is the product of knowledege and techniques combined from all modules of the Code Institute Full Stack Developer Course to date, culminating in the creation of this Full Stack Framework Django project. The Application will allow an admin user to store and manipulate data records and also allow nominated staff users to create, read, update and delete additional data records for the **Xbox Anticipator** website.
 
-A live version of the site can be found [here](https://)
+A live version of the site can be found [here](https://pp04-xbox-anticipator.herokuapp.com/)
 
 ![site preview](readme_media/)
+
+### **PROJECT FUNCTIONALITY**
+The application uses Django 3 to encourage rapid development, by following a model-template-view architecture pattern.
+Alongside using Django, sqlite was used in the Project's inception phase as a test database for local testing. Sqlite is self-contained highly reliable, SQL database engine that features all the normal relational database management. Later, development was switched PostGreSQL (aka Postgres), to ensure any data entered was visible in the deployed application. Postgres is open source and boosts a fully technical and easy to use Object relational database management system.
+The project is version controlled via Git & Github and is deployed via Heroku. All environment variables & secret variables are stored in an env.py file, which is then held in a git-ignored file, ensuring project integrity is held to a high secure present day and project requirements standard.
+
+Using Django and the above Database methods the site owner, as an administrator for the application, has complete access to a custom Admin dashboard where they can Create, Read, Update and Delete records for each of the application models as appropriate. An 'is staff' field was included in the User model specifically to allow for the creation of trusted community members as staff, with the ability to maintain, add to and curate the database of upcoming Xbox games the **Xbox Anticipator** site showcases. 
+
+To this end, please ensure when using the site and testing the CRUD funcionality of this application, **please log in as the non-admin, staff-enabled test user, Ben Kenobi:** 
+
+| IS STAFF? | USER | EMAIL | PASSWORD | IS ADMIN? |
+|-----|-----|-----|-----|-----|
+| YES | Ben Kenobi | **kenobi@test.com** | **1234star4321** | NO |
+| NO | Luke Skywalker | skywalker@test.com | 1234star4321 | NO |
+| YES | Paul Whiteside | alfa23@test.com | alfa1606 | YES |
 
 ----
 
@@ -16,6 +31,10 @@ A live version of the site can be found [here](https://)
 **title** aims to... 
 
 ## **USER GOALS:** 
+
+| ID | CONTENT | SOLUTION |
+|-----|-----|-----|
+| [#1]
 
 *Unregistered User (Logged Out) Goals* include:
 - 
@@ -145,37 +164,43 @@ Colours utilised were chosen from the palette of the background video, with the 
 
 During the course of this project I have utilised the following technologies:
 
-## **LANGUAGES**
+## **LANGUAGES, VERSION CONTROL and FRAMEWORKS**
 
-- [**JavaScript**](https://www.javascript.com/) was used to add interactivity and enrich the User eXperience
+### HTML, CSS, JS & Python - core languages used to create this CRUD application:
+- [**JavaScript**] (https://www.javascript.com/) was used to add interactivity and enrich the User eXperience
+- [**HTML5**] (https://html.com/html5/) (HyperText Markup Language) was used for structuring & presenting site content
+- [**CSS**] (https://www.css3.info/) (Cascading Style Sheets) was used to provide styling to the HTML
+### VERSION CONTROL and FRAMEWORKS:
+- [**Python 3**]
+- [**Git**] (https://git-scm.com) was used for version control (commit to Git and push to GitHub)
+- [**Gitpod**] (https://www.gitpod.io/) was used to write my code; an online IDE linked to the GitHub repository
+- [**GitHub**] (https://github.com/) was used to create the repository and store the project's code after being pushed from Git
+- [**Bootstrap Framework**] (https://getbootstrap.com/) was used as the core structuring layout for the application, ensuring mobile-first design and screen size fluidity
+- [**Bootstrap's Imported Javascript & JQuery**] (https://getbootstrap.com/docs/4.3/getting-started/introduction/#js) used for Responsive Navbar expand & collapse, roundSlider and alert messages timeout functionality
+- [**Django**] (https://www.djangoproject.com/) was used as the architectural engine following the model-template-view approach
+- [**Heroku**] (https://www.heroku.com/) A cloud platform as a service enabling deployment for this CRUD application
 
-- [**HTML5**](https://html.com/html5/) (HyperText Markup Language) was used for structuring & presenting site content
+## **TOOLS USED**
+- [**PostgreSQL**] A free, open-source relational database management system emphasizing extensibility and technical standards compliance
+- [**Balsamiq**] (https://balsamiq.com) used to generate mobile and desktop wireframes
+- [**favicon**] (https://www.favicon.cc/) was used to create a custom favicon for the project
+  ![favicon (readme_media/)]
+- [**Google Chrome Dev Tools**] (https://www.google.com/intl/en_uk/chrome/) used to debug & test source code using HTML5 and to test site responsiveness, also assisted in identifying the correct style properties to override some Bootstrap styling
+- [**Google Fonts**] (https://fonts.google.com) used for all fonts utilised in the project
+- [**amiresponsive**] (http://ami.responsivedesign.is/) used to check how responsive the site is on different devices
+- [**Web Page Test**] (https://www.webpagetest.org/) used to test site performance
+- [**JSHint**] (https://jshint.com/), [**W3C Markup**] (https://validator.w3.org/) and [**W3C Jigsaw**] (http://jigsaw.w3.org/css-validator/) used to validate all source JavaScript, HTML & CSS code
+- [**PEP 8 Online Validator**] (http://pep8online.com/) used to check my python code to be consistent with PEP8 requirements
+- [**Font Awesome Icons**] (https://fontawesome.com/icons?d=gallery) used for social icons in footer and site-wide iconography
+- [**ToC**] (https://) used to generate ReadMe Table of Content
 
-- [**CSS**](https://www.css3.info/) (Cascading Style Sheets) was used to provide styling to the HTML
+## Database
 
-## **TOOLS**
+The database used for this Project was Postgres, as an Installed add-on to the deployed Heroku Application. Sqlite3 was used initially to test User Authentication, Registration & Login, and for testing the creation of Game data. However later in development I moved to local & deployed testing so Postgres was utilised from that point on.
 
-- [**favicon**](https://www.favicon.cc/) was used to create a unique favicon for **nerdOmeter**
+When the app and its models were created and implemented, `python manage.py makemigrations` was run in the terminal to create the initial model package and `python manage.py migrate` was then used to apply the model to the database and create the table.
+Where possible, first-time-right methodology was approached when creating the models to avoid to many alterations to the models and the database table through multiple `makemigrations` and `migrate` commands.
 
-  ![favicon](readme_media/site_screens/pp02_favicon.png)
-
-- [**Git**](https://git-scm.com/) was used for version control (commit to Git and push to GitHub)
-
-- [**Gitpod**](https://www.gitpod.io/) was used to write my code; an online IDE linked to the GitHub repository
-
-- [**GitHub**](https://github.com/) was used to create the repository and store the project's code after being pushed from Git
-
-- [**Chrome**](https://www.google.com/intl/en_uk/chrome/) used to debug & test source code using HTML5 and to test site responsiveness
-
-- [**Balsamiq**](https://balsamiq.com) used to generate project site maps and wireframes
-
-- [**Google Fonts**](https://fonts.google.com) used for all fonts utilised in the project
-
-- [**amiresponsive**](http://ami.responsivedesign.is/) used to check how responsive the site is on different devices
-
-- [**Web Page Test**](https://www.webpagetest.org/) used to test site performance
-
-- [**JSHint**](https://jshint.com/), [**W3C Markup**](https://validator.w3.org/) and [**W3C Jigsaw**](http://jigsaw.w3.org/css-validator/) used to validate all source JavaScript, HTML & CSS code
 
 ----
 
@@ -194,23 +219,6 @@ During the course of this project I have utilised the following technologies:
 ## ***FEATURES TO IMPLEMENT***
 
 - Identified as **Strategic Trade-offs** at ***UXD Phase 2***, a **GOAL** and **GOAL** will be addressed, skills and time permitting, as and when possible.
-
-----
-
-# **VERSION CONTROL**
-
-Managed within **GitHub** and **Gitpod** via regular commits pushed to GitHub remote servers:
-
-## Gitpod Workspaces
-1. Starting from GitHub, clone the Code Institute template by clicking Use This Template and copying to my repo. Launch Workspace by clicking GitPod button - this action is only performed once and the workspace is subsequently reopened through GitPod.
-
-2. Start the Gitpod Workspace which opens an online IDE editor window.
-    
-    - Update GitHub by committing from GitPod
-
-3. During editing save the code regularly, using git add ., git commit -m "commit message here" and git push Bash commands to push changes to the GitHub repository.
-
-4. Meaningful commit messages allow easy roll-back of any changes to earlier versions.
 
 ----
 
@@ -301,9 +309,9 @@ In addition to my own testing a link to the project was shared to family & frien
 
 - Create a new, blank **Django Project**
 
-    - Create new project: 'gastropub'
-    - Create new app: 'reservation'
-    - Add 'reservation' to the installed apps in settings.py
+    - Create new project: 'anticipator'
+    - Create new app: 'xbox'
+    - Add 'xbox' to the installed apps in settings.py
     - Migrate all new changes to the database
     - Run the server to test
 
@@ -350,49 +358,95 @@ In addition to my own testing a link to the project was shared to family & frien
         - Create a Procfile
 
 - Deploy new empty project to Heroku
-![init heroku deploy](readme_source/)
-
 
 ----
 
 # **DEPLOYMENT**
 
+This full stack application was developed using in-browser IDE Gitpod Code v1.73.1 and version controlled via local (git) and online (github) repository technologies. All secret environment variables were stored in an `env.py` file, which was added to a `.gitignore` file and out of the public repo. Those variables detailed in the env.py file were re-enacted in Heroku Settings for this application under the `Config Vars` section, allowing the deployed site to utilise these secret variables.
+
 The terminal was used to deploy the project locally:
-1. Create a repository on GitHub from the Code Institute full template
-2. Open repository in source code editor (GitPod)
-3. Enter "python3 manage.py runserver" into the terminal
-5. Open local host address on web browser
-6. All local saved changes appear here
+- Create a repository on GitHub from the Code Institute full template
+- Open repository in source code editor (GitPod)
+- Enter "python3 manage.py runserver" into the terminal
+- Open local host address on web browser
+- All local saved changes appear here
 
+Deploying this application was achieved by:
+- Pushing code from the IDE to Github via Git and the built-in bash terminal
+- Creating an app on Heroku & deploying it from same
+- Adding secret environment variables to the app's Config Vars in Heroku/Settings and assigning to the respective secret values held in the env.py for Live Deployment
+- In Heroku/Deploy, deployment method set to Github
 Final deployment to Heroku:
-1. Uncomment the PostgreSQL databse in settings.py file
-2. Set debug = False in settings.py file
-3. Commit & push all files to GitHub
-3. In Heroku: remove DISABLE_COLLECTSTATIC config var
-4. In Heroku deploy tab -> manual deploy section, click 'Deploy branch'
+- Set debug = False in settings.py file
+- Commit & push all files to GitHub
+- In Heroku/Settings: Remove DISABLE_COLLECTSTATIC from Config Vars
+- In Heroku/Deploy: Check auto deploy and click 'Deploy branch' to deploy app 
 
-A live link to this project can be found [here](https://alfa23.github.io/)
+A live link to this project can be found [here]([https://alfa23.github.io/](https://pp04-xbox-anticipator.herokuapp.com/))
+
+To clone the repository:
+- Select the Repository from Github Dashboard
+- Click on the green 'Clone or download' button
+- Click on the clipboard icon to the right of the Git URL to copy the web URL of the Clone
+- Open your preferred Integrated Development Environment (IDE) and navigate to the terminal window
+- Change the directory to where you want to clone the repository to
+- Paste the Git URL copied from above and click 'Ok'
+- Once open, create an env.py file and assign the Database URL, Secret Key and other secret variables - ensure the `env.py` is in the root project directory and add it to `.gitignore` to ensure any Secret details aren't exposed
+
 
 ----
 
-## **BUGS and FIXES**
+## **CHALLENGES, BUGS and FIXES**
 
-### **Bug: <ISSUE>** detail
+### **Bug: Challenges finding, extracting and handling current_user_score value in GameDetailView**
   
   • *Issue:* 
   
-  • *Fix:* 
+  • *Fix:* https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset
 
   ![image](readme_media/)
+
+----
+
+### **Bug: Success message method not working for DeleteView:**
+  
+  • *Issue:* 
+  
+  • *Fix:* https://stackoverflow.com/questions/24822509/
+
+  ![image](readme_media/)
+
+----
+
+### **Bug: Date picker in Django form:**
+  
+  • *Issue:* Initial Django/Crispy Form renderings for CreateView weren't displaying a date picker in the input field, only the option to type dates manually.  
+  
+  • *Fix:* Code to enable DateInput widget referenced/sourced from: https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django
+
+  ![image](readme_media/)
+
+----
+
+
+
+
+
+
+### **CONTRIBUTIONS**
+
+• **All document fonts** sourced from google fonts: 
+
+• **Django Custom User Model** process and code referenced/sourced from: https://testdriven.io/blog/django-custom-user-model/
+
+• **Settings for CustomUser email as username in Django-AllAuth** process and code referenced/sourced from: https://pyphilly.org/know-thy-user-custom-user-models-django-allauth/
+
+
+• **Rating method theory & constraints** referenced/sourced from: https://stackoverflow.com/questions/58115738/realizing-rating-in-django
 
 ----
 
 ## **CREDITS**
 
 ----
-
-### **CONTENT**
-
-• **All document fonts** sourced from google fonts: 
-
-• **Django Custom User Model** process and code referenced from: https://testdriven.io/blog/django-custom-user-model/
