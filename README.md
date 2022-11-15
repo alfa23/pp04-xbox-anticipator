@@ -168,8 +168,11 @@ Colours utilised were chosen with the **60:40:10 rule** in mind
     Sourced from: https://assets.xboxservices.com/assets/5b/c0/5bc0beca-369a-495d-9212-1dca8fb43a62.jpg?n=294529_Super-Hero-1400_1920x1080.jpg
   
   • Game images utilised sourced from: 
+  
     - Forza Motorsport, High On Life, Marvel's Midnight Suns, Redfall & Starfield: https://www.gamesradar.com/upcoming-xbox-series-x-games/
+
     - Test Drive Unlimited: https://www.gameinformer.com/2021/04/21/new-test-drive-unlimited-solar-crown-trailer-promises-more-information-this-summer
+
     - Destiny 2: https://cdn.mos.cms.futurecdn.net/XfWpA7JeyVWyWzEBEVbyWk.jpg
   
   • All copy used for game descriptions have relevant sources credited in-body where appropriate. 
