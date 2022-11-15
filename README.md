@@ -28,34 +28,7 @@ To this end, please ensure when using the site and testing the CRUD funcionality
 
 ## **PROJECT GOALS**
 
-**title** aims to... 
-
-## **USER GOALS:** 
-
-| ID | CONTENT | SOLUTION |
-|-----|-----|-----|
-| [#1]
-
-*Unregistered User (Logged Out) Goals* include:
-- 
-- 
-- 
-
-*Registered User (Logged In) Goals* include:
-- 
-- 
-- 
-
-*Site Admin (Superuser) Goals* include:
-- 
-- 
-
-## **USER EXPECTATIONS:**
-
-- Intuitive/conventional navigation elements
-- Familiar and/or easily understandable site structure
-- Responsive: access site easily on any device
-
+**Xbox Anticipator** aims to... 
 
 ## **USER STORIES:**
 
@@ -63,46 +36,81 @@ A **GitHub** classic kanban project board was utilised throughout to log all Use
 
 ![kanban image](readme_media/)
 
+***Unregistered User (Logged Out) Stories* include:**
+- USER STORY #6: User Registration / Login
+  As a new or returning user I can easily register / login so that I can rate anticipation for &/ comment on games.
+- USER STORY #3: View Games List
+  As a new or returning user I can view a list of games so that I can see which titles are upcoming.
+- USER STORY #4: View Game Details
+  As a new or returning user I can click on a game so that I can view all the related information.
+- USER STORY #5: View Ratings / Comments
+  As a site admin / new or returning user I can view game ratings / comments so that I can see how much games are anticipated and follow conversations.
+
+***Registered User (Logged In) Stories* include:**
+- USER STORY #7: User Rating
+  As a registered user I can rate my anticipation for any game so that an average community 'Anticipation Rating' can be calculated.
+- USER STORY #8: User Comments
+  As a registered user I can leave comments on a game so that I can be involved in the conversation.
+
+***Site Admin (Superuser) Stories* include:**
+- USER STORY #1: Manage Games List
+  As a staff user / site admin I can create, read, update & delete games so that I can easily manage content.
+- USER STORY #2: Create Game Data
+  As a staff user / site admin I can create game data so that add content to the site.
+- USER STORY #9: Approve Comments
+  As a site admin I can approve or disapprove comments so that I can manage objectionable content.
+- USER STORY #11: Reply to Comments
+  As a registered user I can reply to other users' comments so that I can be actively involved in the conversation.
+
+***User Stories which fell outside of MVP solution*:**
+- USER STORY #10: Like / Unlike Comments
+  As a registered user I can like or unlike other users' comments so that I can interact with the community.
+- USER STORY #12: Edit User Profile
+  As a registered user I can view, edit & delete my user profile so that I can manage my content & data.
+
+
+## **USER EXPECTATIONS:**
+
+- Intuitive/conventional navigation elements
+- Familiar and/or easily understandable site structure
+- Responsive: access site easily on any device
+
 ---- 
 
 # **UCD Phase 2: SCOPE**
 
-### Analysis and grading of *Phase One considerations* allows a simple ***Strategy Table*** to be generated:
+### Analysis and MoSCoW grading of User Stories:
 
-| OPPORTUNITY/PROBLEM/FEATURE                | IMPORTANCE | VIABILITY/FEASIBILITY | ID    | 
-|--------------------------------------------|:----------:|:---------------------:|:-------
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | A     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | B     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | C     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | D     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | E     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | F     |
-| OPPORTUNITY/PROBLEM/FEATURE                | 5          | 5                     | G     |
-| TOTAL                                      | 35         | 35                    |       |
+| USER STORY                                 | MoSCoW | 
+|--------------------------------------------|:------:|
+| USER STORY #1: Manage Games List           |  M     |
+| USER STORY #2: Create Game Data            |  M     |
+| USER STORY #3: View Games List             |  M     |
+| USER STORY #4: View Game Details           |  M     |
+| USER STORY #5: View Ratings / Comments     |  S     |
+| USER STORY #6: User Registration / Login   |  M     |
+| USER STORY #7: User Rating                 |  S     |
+| USER STORY #8: User Comments               |  S     |
+| USER STORY #9: Approve Comments            |  S     |
+| USER STORY #10: Like / Unlike Comments     |  C / W |
+| USER STORY #11: Reply to Comments          |  C / W |
+| USER STORY #12: Edit User Profile          |  C / W |
 
-![UCD Strategic Trade-Offs: Importance vs Feasibility](readme_media/planning_docs/)
-
-## **STRATEGIC TRADE-OFFS**
-
-Plotting the Strategy Table results provides a visible indication of what is feasibily within the scope of the project at this time. As I am unable to meet all requirements at present, I will aim to provide **Title** initially as an MVP or Minimum Viable Product, therefore, due to time and current-skill limitations the site will be developed in phases:
-
-  ***Initial Phase:*** Delivery of MVP, a fully functioning website, with the exception of
-    
-  - 
-  
-  - 
-
-  ***Secondary Phase:*** 
-    
-  - 
+***Proposed Production:*** Delivery of MVP as a fully functioning solution, with the potential exception of:
+- USER STORY #10: Like / Unlike Comments
+  As a registered user I can like or unlike other users' comments so that I can interact with the community.
+- USER STORY #11: Reply to Comments
+  As a registered user I can reply to other users' comments so that I can be actively involved in the conversation.
+- USER STORY #12: Edit User Profile
+  As a registered user I can view, edit & delete my user profile so that I can manage my content & data.
 
 ----
 
 # **UCD Phase 3: STRUCTURE**
 
-## **LAYOUT** 
+## **ENTITY RELATIONSHIP DIAGRAM** 
 
-Detail.
+An entitiy Relationship diagram was produced in order to better visualise the data to be stored in the database. It demonstrates the basic design upon which the database will be built. It specifies what data entities and attributes will be stored and how they relate to eachother.
 
 ![Image](readme_media/planning_docs/)
 
@@ -112,7 +120,7 @@ Detail.
 
 ## **INITIAL WIREFRAMES**
 
-Following current conventional practice, **nerdOmeter** was designed with a Mobile First approach.
+Following current conventional practice, **Xbox Anticipator** was designed with a Mobile First approach.
 
 ----
 
@@ -134,29 +142,35 @@ All wireframes generated in [Balsamiq](https://balsamiq.com)
 
 All fonts utilised in this project were sourced from and served by [**Google Fonts**](https://fonts.google.com)
 
-- **Heading Font:** *FontName*
+- **Heading Font:** *Orbitron*
   
-  *FontName* is...
+  *Orbitron* is...
 
-- **Body Font:** *FontName*
+- **Body Font:** *Montserrat Alternates*
 
-  *FontName* was chosen as a compliment to *FontName*.
+  *Montserrat Alternates* was chosen as a compliment to *Orbitron*.
 
 ![Google Fonts Choices](readme_media/site_screens/pp04_googlefonts.png)
 
 ## Colours
 
-Colours utilised were chosen from the palette of the background video, with the **60:40:10 rule** in mind 
+Colours utilised were chosen with the **60:40:10 rule** in mind 
 
-  • 60% Background/Primary - **#000000** *ColorName*
+  • 60% Background/Primary - **#000000** *Off white* was retained as a clean and fresh background colour.
   
-  • 40% Body Text/Secondary: **#000** *ColorName* chosen for excellent contrast with Primary
+  • 40% Body Text/Secondary: **#000** *Xbox green* chosen as it's a strong, brand-specific colour, which is familiar to Xbox users. 
   
-  • 10% Accent/Tertiary: **#000** *ColorName* chosen as a clean, fresh contrast to Primary and compliment to Tertiary
+  • 10% Accent/Tertiary: **#000** *Red* was chosen as a good contrasting accent colour to both Primary and Secondary colours.
 
 ## Imagery
 
-  • 
+  • The image utilised for the site header is a cropped version of an official Microsoft/Bethesda image, from a showcase event in mid-2022. 
+    Sourced from: https://assets.xboxservices.com/assets/5b/c0/5bc0beca-369a-495d-9212-1dca8fb43a62.jpg?n=294529_Super-Hero-1400_1920x1080.jpg
+  • Game images utilised sourced from: 
+    - Forza Motorsport, High On Life, Marvel's Midnight Suns, Redfall & Starfield: https://www.gamesradar.com/upcoming-xbox-series-x-games/
+    - Test Drive Unlimited: https://www.gameinformer.com/2021/04/21/new-test-drive-unlimited-solar-crown-trailer-promises-more-information-this-summer
+    - Destiny 2: https://cdn.mos.cms.futurecdn.net/XfWpA7JeyVWyWzEBEVbyWk.jpg
+  • All copy used for game descriptions have relevant sources credited in-body where appropriate. 
 
 ----
 
