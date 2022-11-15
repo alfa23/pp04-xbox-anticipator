@@ -15,9 +15,9 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 {% if "placeholder" in game.feature_image.url %}
                 <img src="https://res.cloudinary.com/alfa23/image/upload/v1667614281/media/Testcard_F_y882z5.jpg"
-                    width="100%">
+                    width="100%" alt="Placeholder image of BBC Test Card">
                 {% else %}
-                <img src=" {{ game.feature_image.url }}" width="100%">
+                <img src=" {{ game.feature_image.url }}" width="100%" alt="Game-specific image">
                 {% endif %}
             </div>
         </div>

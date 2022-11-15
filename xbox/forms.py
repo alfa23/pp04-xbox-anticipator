@@ -55,14 +55,12 @@ class GameForm(forms.ModelForm):
         model = Game
         fields = [
             'title',
-            # 'slug',
             'dev_pub',
             'release_date',
             'website',
             'game_info',
             'info_excerpt',
             'feature_image',
-            # 'status',
         ]
         widgets = {
             'release_date': DateInput(attrs={'type': 'date'}),
