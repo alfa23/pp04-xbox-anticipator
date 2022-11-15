@@ -27,7 +27,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.3rem;
-    color: #F9FAFC;
+    color: #fffafa;
 }
 
 .brand-page {
@@ -38,13 +38,15 @@ body {
 }
 
 .btn-custom {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     background-color: #0e7a0d;
-    color: #F9FAFC;
+    color: #fffafa;
 }
 
 .btn-custom:hover {
-    background-color: #E84610;
-    color: #F9FAFC;
+    background-color: #960018;
+    color: #fffafa;
 }
 
 .comment-box {
@@ -62,7 +64,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.5rem;
-    color: #F9FAFC;
+    color: #fffafa;
 }
 
 .custom-gray {
@@ -82,7 +84,7 @@ body {
 .footer a {
     padding-top: 1rem;
     font-size: 2rem;
-    color: white;
+    color: #fffafa;
     text-decoration: none;
 }
 
@@ -98,7 +100,7 @@ body {
     margin-left: 20px;
     height: 0px;
     border: none;
-    border-top: 3px solid #F9FAFC;
+    border-top: 3px solid #fffafa;
 }
 
 .hr-small {
@@ -108,7 +110,7 @@ body {
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #fffafa;
 }
 
 .template-link {
@@ -133,7 +135,7 @@ body {
 
 .masthead-text {
     background-color: #0e7a0d;
-    color: white;
+    color: #fffafa;
     position: relative;
 }
 
@@ -175,7 +177,7 @@ body {
 
 .game-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #fffafa;
 }
 
 /* roundSlider styling: http://roundsliderui.com */

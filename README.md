@@ -156,11 +156,11 @@ All fonts utilised in this project were sourced from and served by [**Google Fon
 
 Colours utilised were chosen with the **60:40:10 rule** in mind 
 
-  • 60% Background/Primary - **#000000** *Off white* was retained as a clean and fresh background colour.
+  • 60% Background/Primary - **#fffafa** *Snow* was chosen as a clean and calm alternative to white. Taken from *Original Xbox Green* list of Intermediately Related colours.
   
-  • 40% Body Text/Secondary: **#000** *Xbox green* chosen as it's a strong, brand-specific colour, which is familiar to Xbox users. 
+  • 40% Body Text/Secondary: **#0e7a0d** *Original Xbox Green* chosen as it's a strong, brand-specific colour, which is familiar to Xbox users. Colour hex value referenced from: https://encycolorpedia.com/0e7a0d.
   
-  • 10% Accent/Tertiary: **#000** *Red* was chosen as a good contrasting accent colour to both Primary and Secondary colours.
+  • 10% Accent/Tertiary: **#960018** *Carmine* was chosen as a good contrasting accent colour to both Primary and Secondary colours. Taken from Original Xbox list of Intermediately Related colours, it is mainly utilised for link & button hover.
 
 ## Imagery
 
