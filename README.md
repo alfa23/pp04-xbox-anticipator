@@ -124,13 +124,13 @@ Following current conventional practice, **Xbox Anticipator** was designed with 
 
 ----
 
-![Balsamiq](readme_media/planning_docs/wireframes/)
+![Example mobile wireframe](static/wireframes/anticipator_wireframes_mobile_pngs/index%20%5Blogged%20in%20STAFF%5D.png)
 
 ----
 
-![Balsamiq](readme_media/planning_docs/wireframes/)
+![Example desktop wireframe](static/wireframes/anticipator_wireframes_desktop_pngs/index%20%5Blogged%20in%20STAFF%5D.png)
 
-All wireframes generated in [Balsamiq](https://balsamiq.com)
+All wireframes generated in **[Balsamiq](https://balsamiq.com)**. Full sets of wireframes for mobile and desktop can be found [**here**](static/wireframes/).
 
 ---- 
 
@@ -156,7 +156,7 @@ All fonts utilised in this project were sourced from and served by [**Google Fon
 
 Colours utilised were chosen with the **60:40:10 rule** in mind 
 
-  • 60% Background/Primary - **#fffafa** *Snow* was chosen as a clean and calm alternative to white. Taken from *Original Xbox Green* list of Intermediately Related colours.
+  • 60% Background/Primary - **#f8f8f8** *Guyabano* was chosen as a light, clean and calm alternative to white. Taken from *Original Xbox Green* list of Distantly Related Related colours.
   
   • 40% Body Text/Secondary: **#0e7a0d** *Original Xbox Green* chosen as it's a strong, brand-specific colour, which is familiar to Xbox users. Colour hex value referenced from: https://encycolorpedia.com/0e7a0d.
   
@@ -164,18 +164,21 @@ Colours utilised were chosen with the **60:40:10 rule** in mind
 
 ## Imagery
 
-  • The image utilised for the site header is a cropped version of an official Microsoft/Bethesda image, from a showcase event in mid-2022. 
-    Sourced from: https://assets.xboxservices.com/assets/5b/c0/5bc0beca-369a-495d-9212-1dca8fb43a62.jpg?n=294529_Super-Hero-1400_1920x1080.jpg
-  
-  • Game images utilised sourced from: 
-  
-    - Forza Motorsport, High On Life, Marvel's Midnight Suns, Redfall & Starfield: https://www.gamesradar.com/upcoming-xbox-series-x-games/
+• Main page banner image:
 
-    - Test Drive Unlimited: https://www.gameinformer.com/2021/04/21/new-test-drive-unlimited-solar-crown-trailer-promises-more-information-this-summer
-
-    - Destiny 2: https://cdn.mos.cms.futurecdn.net/XfWpA7JeyVWyWzEBEVbyWk.jpg
+  - The image utilised for the site header is a cropped version of an official Microsoft/Bethesda image, from a showcase event in mid-2022. 
   
-  • All copy used for game descriptions have relevant sources credited in-body where appropriate. 
+    - Sourced from: https://assets.xboxservices.com/assets/5b/c0/5bc0beca-369a-495d-9212-1dca8fb43a62.jpg?n=294529_Super-Hero-1400_1920x1080.jpg
+
+• Game images utilised sourced from: 
+  
+  - Forza Motorsport, High On Life, Marvel's Midnight Suns, Redfall & Starfield: https://www.gamesradar.com/upcoming-xbox-series-x-games/
+
+  - Test Drive Unlimited: https://www.gameinformer.com/2021/04/21/new-test-drive-unlimited-solar-crown-trailer-promises-more-information-this-summer
+
+  - Destiny 2: https://cdn.mos.cms.futurecdn.net/XfWpA7JeyVWyWzEBEVbyWk.jpg
+  
+• All copy used for game descriptions have relevant sources credited in-body where appropriate. 
 
 ----
 
@@ -189,8 +192,10 @@ During the course of this project I have utilised the following technologies:
 - [**JavaScript**] (https://www.javascript.com/) was used to add interactivity and enrich the User eXperience
 - [**HTML5**] (https://html.com/html5/) (HyperText Markup Language) was used for structuring & presenting site content
 - [**CSS**] (https://www.css3.info/) (Cascading Style Sheets) was used to provide styling to the HTML
+- [**Python**] (https://www.python.org/) 'Python is a programming language that lets you work quickly
+and integrate systems more effectively'
+
 ### VERSION CONTROL and FRAMEWORKS:
-- [**Python 3**]
 - [**Git**] (https://git-scm.com) was used for version control (commit to Git and push to GitHub)
 - [**Gitpod**] (https://www.gitpod.io/) was used to write my code; an online IDE linked to the GitHub repository
 - [**GitHub**] (https://github.com/) was used to create the repository and store the project's code after being pushed from Git
@@ -202,14 +207,12 @@ During the course of this project I have utilised the following technologies:
 ## **TOOLS USED**
 - [**PostgreSQL**] A free, open-source relational database management system emphasizing extensibility and technical standards compliance
 - [**Balsamiq**] (https://balsamiq.com) used to generate mobile and desktop wireframes
-- [**favicon**] (https://www.favicon.cc/) was used to create a custom favicon for the project
-  ![favicon (readme_media/)]
+- [**favicon**] (https://www.favicon.cc/) was used to create a custom favicon for the project: ![favicon](static/favicon.ico)
 - [**Google Chrome Dev Tools**] (https://www.google.com/intl/en_uk/chrome/) used to debug & test source code using HTML5 and to test site responsiveness, also assisted in identifying the correct style properties to override some Bootstrap styling
 - [**Google Fonts**] (https://fonts.google.com) used for all fonts utilised in the project
 - [**amiresponsive**] (http://ami.responsivedesign.is/) used to check how responsive the site is on different devices
-- [**Web Page Test**] (https://www.webpagetest.org/) used to test site performance
 - [**JSHint**] (https://jshint.com/), [**W3C Markup**] (https://validator.w3.org/) and [**W3C Jigsaw**] (http://jigsaw.w3.org/css-validator/) used to validate all source JavaScript, HTML & CSS code
-- [**PEP 8 Online Validator**] (http://pep8online.com/) used to check my python code to be consistent with PEP8 requirements
+- [**CI Python Linter**] (https://pep8ci.herokuapp.com/) Code Institute's very own linter, used to check python code is consistent with PEP8 requirements
 - [**Font Awesome Icons**] (https://fontawesome.com/icons?d=gallery) used for social icons in footer and site-wide iconography
 - [**ToC**] (https://) used to generate ReadMe Table of Content
 
@@ -243,7 +246,37 @@ Where possible, first-time-right methodology was approached when creating the mo
 
 # **TESTING**
 
-## AUTOMATED TESTING
+## CODE VALIDATION
+
+## W3C Validator Testing 
+
+- HTML
+  - Aside from `{% CONTROL %}`, `{{ TEMPLATE VAR }}` and other template-related errors and warnings (for expected !DOCTYPE/title and adding language attributes, etc.), no further errors were returned when passing through the official [W3C validator](https://validator.w3.org)
+
+| .html PAGE | RESULT |
+|:-----:|:-----:|
+| base | [base](static/) |
+| game_confirm_delete | [del](static/) |
+| game_create | [create](static/) |
+| game_detail | [detail](static/) |
+| game_update | [update](static/) |
+| index | [index](static/) |
+| login | [login](static/) |
+| logout | [logout](static/) |
+| signup | [signup](static/) |
+
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org)
+
+![W3C CSS](readme_media/check_screens/)
+
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>
+</p>
 
 ## jshint Validator Testing 
 
@@ -252,58 +285,46 @@ Where possible, first-time-right methodology was approached when creating the mo
 
 ![JSHint JS](readme_media/check_screens/)
 
-## W3C Validator Testing 
+## PEP8 Validator Testing
 
-- HTML
-  - No errors were returned when passing through the [(X)HTML5 Validator](https://html5.validator.nu/)
+- PEP8
+  - All .py files passed through the [PEP 8 Online Validator](http://pep8online.com/)
 
-![W3C HTML](readme_media/check_screens/)
-
-- HTML
-  - 3 errors were returned when passing through the official [W3C validator](https://validator.w3.org)
-    - These relate to the outdated convention of only *ever* using one `<main>` tag
-
-![W3C HTML](readme_media/check_screens/)
-
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org)
-
-![W3C CSS](readme_media/check_screens/)
+| APP | .py FILE | RESULT |
+|:-----:|:-----:|:-----:|
+| anticipator | urls | [base](static/) |
+| xbox | admin | [admin](static/) |
+| xbox | forms | [admin](static/) |
+| xbox | models | [admin](static/) |
+| xbox | urls | [admin](static/) |
+| xbox | views | [admin](static/) |
 
 **Google Developer Tools**
 
-- I made use of the built-in **Chrome Dev Tools** to experiment and debug while coding, in addition to testing simulated responsive behaviour across a wide range of mobile and desktop devices, and finally checking all pages Performance using **Lighthouse**. 
+- I made use of the built-in **Chrome Dev Tools** to experiment and debug while coding, in addition to testing simulated responsive behaviour across a range of mobile and desktop devices, and finally checking all pages Performance using **Lighthouse**. 
 
 **Response Testing**
 
-In order to make sure that RJW Illustration was responsive to all device sizes, I used [amiresponsive](http://ami.responsivedesign.is/)
+In order to make sure that **Xbox Anticipator**** was responsive to all device sizes, I used [amiresponsive](http://ami.responsivedesign.is/)
 
 ![amiresponsive](readme_media/check_screens/)
-
-**WebPageTest**
-
-- I used [WebPageTest](https://www.webpagetest.org/) set to London/Chrome as a final test for **Title**.
-
-![WebPageTest Main](readme_media/check_screens/)
 
 ## **MANUAL TESTING**
 
 In addition to my own testing a link to the project was shared to family & friends for rigorous testing across varied devices and screen sizes.
 
-  - **Browsers** including: 
-    - Chrome
-    - Safari
-    - Edge
+- **Browsers** including: 
+  - Chrome
+  - Safari
+  - Edge
 
-  - **Devices** including: 
-    - iPhone SE (Gen 1)
-    - iPhone 11
-    - iPhone 12 Mini
-    - Google Pixel 4a
-    - iPad Pro (2018)
-    - iPad Air (2020)
-    - MacBook Pro (2015)
-    - Windows 10 PC 
+- **Devices** including: 
+  - iPhone 11
+  - iPhone 12 Mini
+  - Google Pixel 6
+  - iPad Pro (2018)
+  - iPad Air (2020)
+  - MacBook Pro (2015)
 
 ## Manual Testing Results Summary
 
@@ -380,7 +401,7 @@ In addition to my own testing a link to the project was shared to family & frien
 
 ----
 
-# **DEPLOYMENT**
+## **DEPLOYMENT**
 
 This full stack application was developed using in-browser IDE Gitpod Code v1.73.1 and version controlled via local (git) and online (github) repository technologies. All secret environment variables were stored in an `env.py` file, which was added to a `.gitignore` file and out of the public repo. Those variables detailed in the env.py file were re-enacted in Heroku Settings for this application under the `Config Vars` section, allowing the deployed site to utilise these secret variables.
 
@@ -450,9 +471,6 @@ To clone the repository:
 
 
 
-
-
-
 ### **CONTRIBUTIONS**
 
 • **All document fonts** sourced from google fonts: 
@@ -460,7 +478,6 @@ To clone the repository:
 • **Django Custom User Model** process and code referenced/sourced from: https://testdriven.io/blog/django-custom-user-model/
 
 • **Settings for CustomUser email as username in Django-AllAuth** process and code referenced/sourced from: https://pyphilly.org/know-thy-user-custom-user-models-django-allauth/
-
 
 • **Rating method theory & constraints** referenced/sourced from: https://stackoverflow.com/questions/58115738/realizing-rating-in-django
 

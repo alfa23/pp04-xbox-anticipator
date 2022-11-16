@@ -37,7 +37,7 @@
             <div class="card-body">
                 <!-- https://stackoverflow.com/questions/298772/django-template-variables-and-javascript -->
                 <h3 class="custom-header"><em style="font-weight: 400;">Your </em><span class="brand-reg">X<em
-                    style="font-weight: 400;">A-Rating:</em> <strong>{{ current_user_rating | safe }}</strong></h3>
+                    style="font-weight: 400;">A-Rating:</em></span> <strong>{{ current_user_rating | safe }}</strong></h3>
                 <hr>
                 {% if user.is_authenticated %}
                 <!-- https://stackoverflow.com/questions/68063119/how-to-store-the-value-of-circular-slider-in-a-variable-and-display-it-in-consol -->

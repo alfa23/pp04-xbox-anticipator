@@ -27,13 +27,13 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.3rem;
-    color: #fffafa;
+    color: #f8f8f8;
 }
 
 .brand-page {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     color: #0e7a0d;
 }
 
@@ -41,12 +41,12 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: #0e7a0d;
-    color: #fffafa;
+    color: #f8f8f8;
 }
 
 .btn-custom:hover {
     background-color: #960018;
-    color: #fffafa;
+    color: #f8f8f8;
 }
 
 .comment-box {
@@ -64,7 +64,7 @@ body {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 1.5rem;
-    color: #fffafa;
+    color: #f8f8f8;
 }
 
 .custom-gray {
@@ -84,7 +84,7 @@ body {
 .footer a {
     padding-top: 1rem;
     font-size: 2rem;
-    color: #fffafa;
+    color: #f8f8f8;
     text-decoration: none;
 }
 
@@ -100,7 +100,7 @@ body {
     margin-left: 20px;
     height: 0px;
     border: none;
-    border-top: 3px solid #fffafa;
+    border-top: 3px solid #f8f8f8;
 }
 
 .hr-small {
@@ -110,12 +110,18 @@ body {
 }
 
 .main-bg {
-    background-color: #fffafa;
+    background-color: #f8f8f8;
 }
 
 .template-link {
     text-decoration: none;
     color: #0e7a0d;
+    margin-bottom: 1rem;
+}
+
+.template-link:hover {
+    text-decoration: none;
+    color: #960018;
     margin-bottom: 1rem;
 }
 
@@ -135,7 +141,7 @@ body {
 
 .masthead-text {
     background-color: #0e7a0d;
-    color: #fffafa;
+    color: #f8f8f8;
     position: relative;
 }
 
@@ -167,7 +173,7 @@ body {
 
 .game-link:hover,
 .page-link {
-    color: #E84610;
+    color: #960018;
 }
 
 .game-title {
@@ -177,7 +183,7 @@ body {
 
 .game-subtitle {
     margin-left: 5%;
-    color: #fffafa;
+    color: #f8f8f8;
 }
 
 /* roundSlider styling: http://roundsliderui.com */

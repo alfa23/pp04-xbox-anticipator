@@ -15,7 +15,8 @@
                 {% csrf_token %}
                 <input type="submit" class="btn btn-danger btn-lg custom-header-rev" value="YUP, DELETE IT!">
                 <br>
-                <a href="{% url 'game_detail' game.slug %}"><p style="margin-top: 0.5rem;">Cancel</p></a>
+                <a href="{% url 'game_detail' game.slug %}" class="custom-header template-link template-link:hover">
+                    <p style="margin-top: 0.5rem;">CANCEL</p></a>
             </form>
             {% else %}
             <p>Please contact us via our <a href="http://www.facebook.com/" class="template-link"><strong>Facebook page</strong></a>
