@@ -1,7 +1,59 @@
+- [**XBOX ANTICIPATOR**](#--xbox-anticipator--)
+  * [**INTRODUCTION**](#--introduction--)
+    + [**PROJECT FUNCTIONALITY**](#--project-functionality--)
+  * [PLEASE SEE [**CHALLENGES, BUGS and FIXES**](#challenges-bugs-and-fixes) SECTION BEFORE USE](#please-see----challenges--bugs-and-fixes-----challenges-bugs-and-fixes--section-before-use)
+- [**UCD Phase 1: STRATEGY**](#--ucd-phase-1--strategy--)
+  * [**PROJECT GOALS**](#--project-goals--)
+  * [**USER STORIES:**](#--user-stories---)
+  * [**GENERIC USER EXPECTATIONS:**](#--generic-user-expectations---)
+- [**UCD Phase 2: SCOPE**](#--ucd-phase-2--scope--)
+    + [Analysis and ***MoSCoW grading*** of ***User Stories:***](#analysis-and----moscow-grading----of----user-stories----)
+- [**UCD Phase 3: STRUCTURE**](#--ucd-phase-3--structure--)
+  * [**ENTITY RELATIONSHIP DIAGRAM**](#--entity-relationship-diagram--)
+- [**UCD Phase 4: SKELETON**](#--ucd-phase-4--skeleton--)
+  * [**INITIAL WIREFRAMES**](#--initial-wireframes--)
+- [**UCD Phase 5: SURFACE**](#--ucd-phase-5--surface--)
+  * [**DESIGN CHOICES**](#--design-choices--)
+  * [Fonts](#fonts)
+  * [Colours](#colours)
+  * [Imagery](#imagery)
+- [**TECHNOLOGIES**](#--technologies--)
+  * [**LANGUAGES, VERSION CONTROL and FRAMEWORKS**](#--languages--version-control-and-frameworks--)
+    + [HTML, CSS, JS & Python - core languages used to create this CRUD application:](#html--css--js---python---core-languages-used-to-create-this-crud-application-)
+    + [VERSION CONTROL and FRAMEWORKS:](#version-control-and-frameworks-)
+  * [**TOOLS USED**](#--tools-used--)
+  * [Database](#database)
+- [**FEATURES**](#--features--)
+  * [**CURRENT FEATURES**](#--current-features--)
+  * [***FEATURES TO IMPLEMENT***](#---features-to-implement---)
+- [**TESTING**](#--testing--)
+  * [CODE VALIDATION](#code-validation)
+  * [W3C Validator Testing](#w3c-validator-testing)
+  * [jshint Validator Testing](#jshint-validator-testing)
+  * [PEP8 Validator Testing](#pep8-validator-testing)
+  * [**MANUAL TESTING**](#--manual-testing--)
+  * [Manual Testing Results Summary](#manual-testing-results-summary)
+- [**DEVELOPMENT CYCLE**](#--development-cycle--)
+  * [**PROJECT CHECKLIST**](#--project-checklist--)
+  * [**DEPLOYMENT**](#--deployment--)
+  * [**CHALLENGES, BUGS and FIXES**](#--challenges--bugs-and-fixes--)
+    + [**Ongoing Bug Report: Image upload via CreateGameView form fails to attach to related POST request**](#--ongoing-bug-report--image-upload-via-creategameview-form-fails-to-attach-to-related-post-request--)
+    + [**Bug: Scare: Sudden site-wide loss of CSS the day before submission!**](#--bug--scare--sudden-site-wide-loss-of-css-the-day-before-submission---)
+    + [**Bug: Challenges finding, extracting and handling current_user_score value in GameDetailView**](#--bug--challenges-finding--extracting-and-handling-current-user-score-value-in-gamedetailview--)
+    + [**Bug: Success message method not working for DeleteView:**](#--bug--success-message-method-not-working-for-deleteview---)
+    + [**Bug: Date picker in Django form:**](#--bug--date-picker-in-django-form---)
+    + [**CONTRIBUTERS**](#--contributers--)
+  * [**CREDITS**](#--credits--)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
+=====
+
 # **XBOX ANTICIPATOR**
 
 ## **INTRODUCTION**
-This fourth Portfolio Project is the product of knowledege and techniques combined from all modules of the Code Institute Full Stack Developer Course to date, culminating in the creation of this Full Stack Framework Django project. The Application will allow an admin user to store and manipulate data records and also allow nominated staff users to create, read, update and delete additional data records for the **Xbox Anticipator** website.
+This **fourth Portfolio Project** is the product of combined knowledege and techniques from all modules of the ***Code Institute Full Stack Developer Course*** to date, culminating in the creation of this **Full Stack Framework Django project**. This Application will allow an admin user to store and manipulate data records and also allow nominated staff users to create, read, update and delete additional data records for the **Xbox Anticipator** website.
 
 A live version of the site can be found [here](https://pp04-xbox-anticipator.herokuapp.com/)
 
@@ -10,23 +62,23 @@ A live version of the site can be found [here](https://pp04-xbox-anticipator.her
 ![amIresponsive](static/readme/anticipator_screens/am_i_responsive/pp04_am_i_responsive.png)
 
 ### **PROJECT FUNCTIONALITY**
-The application uses Django 3 to encourage rapid development, by utilising a model-template-view architecture.
-Alongside using Django, sqlite was used in the Project's inception phase as a database for local testing. Sqlite is self-contained highly reliable, SQL database engine that features all the normal relational database management. Later, development was switched PostGreSQL (aka Postgres), to ensure any data entered was visible in the deployed application. Postgres is open source and boosts a fully technical and easy to use Object relational database management system.
-The project is version controlled via Git & Github and is deployed via Heroku. All environment variables & secret variables are stored in an `env.py` file, which is then held in a git-ignored file, ensuring project integrity is held to a high security standard, with respect to project and present day requirements.
+The application uses **Django 3** to encourage rapid development, by utilising a *model-template-view* approach.
+In conjunction with **Django**, **sqlite** was used in the Project's inception phase as a database for local testing. **Sqlite** is self-contained highly reliable, SQL database engine that includes all the normal relational database management features. Later, development was switched to **PostGreSQL** (aka **Postgres**), to ensure any data entered was visible in the deployed application. **Postgres** is open source and boosts a fully technical and easy to use object-relational database management system.
+The project is version controlled via **Git** & **Github** and is deployed via **Heroku**. All environment & secret variables are stored in an `env.py` file, which is then held in a `.git-ignored` file, ensuring project integrity is held to a high security standard, in relation to project and present day requirements.
 
-Using Django and the above Database methods the site owner, as an administrator for the application, has complete access to a custom Admin dashboard where they can Create, Read, Update and Delete records for each of the application models as appropriate. An `'is staff'` field was included in the User model specifically to allow for the creation of trusted community members as staff, with the ability to maintain, add to and curate the database of upcoming Xbox games the **Xbox Anticipator** site showcases. 
+Using **Django** and the above Database methods the site owner, as an administrator for the application, has complete access to a custom Admin dashboard where they can Create, Read, Update and Delete records for each of the application models as appropriate. An `'is staff'` field was included in the User model specifically to allow for the creation of trusted community members as staff, with the ability to maintain, add to, delete and curate the database of upcoming Xbox games the **Xbox Anticipator** site showcases. 
 
-To this end, please ensure when using the site and testing the CRUD funcionality of this application, **please log in as the non-admin, staff-enabled test user, Ben Kenobi:** 
+To this end, please ensure when using the site and testing the **CRUD funcionality** of this application, **please log in as the non-admin, staff-enabled test user, Ben Kenobi:** 
 
 | IS STAFF? | USER | EMAIL | PASSWORD | IS ADMIN? |
 |-----|-----|-----|-----|-----|
-| YES | Ben Kenobi | **kenobi@test.com** | **1234star4321** | NO |
+| ***YES*** | ***Ben Kenobi*** | **kenobi@test.com** | **1234star4321** | NO |
 | NO | Luke Skywalker | skywalker@test.com | 1234star4321 | NO |
 | YES | Paul Whiteside | alfa23@test.com | alfa1606 | YES |
 
 ----
 
-# PLEASE SEE **BUGS** SECTION BEFORE USE
+## PLEASE SEE [**CHALLENGES, BUGS and FIXES**](#challenges-bugs-and-fixes) SECTION BEFORE USE
 
 ----
 
@@ -40,7 +92,7 @@ Base styling and project setup relies mainly on Bootstrap and initially borrows 
 
 ## **USER STORIES:**
 
-A **GitHub** classic kanban project board was utilised throughout to log all User Stories, track their progress and manage the project. This helped keep focus by moving them, in manageable batches, through *lanes*; from "to do" through "in progress" into "done", as they were completed.
+A **GitHub** classic kanban project board was utilised throughout to log all ***User Stories***, track their progress and manage the project. This helped keep focus by moving them, in manageable batches, through *lanes*; from *"to do"* through *"in progress"* into ***"done"***, as they were completed.
 
 ![kanban image](static/readme/anticipator_screens/small_screen_pngs/anticipator_kanban-5_sm.png)
 
@@ -78,7 +130,7 @@ More **Kanban** screens [**here**](static/readme/anticipator_screens/kanban/).
 - USER STORY #12: Edit User Profile
   As a registered user I can view, edit & delete my user profile so that I can manage my content & data.
 
-Due to the inevitable development delays due to learning challenges, bug squashing and the like, time and skills unfortunately didn't allow for all User Goals to be met. However, all *'Must Have'* and *'Should Have'* stories were satisfied and MVP functionality was achieved. As site owner I'm slightly disappointed that all features weren't included in this iteration but I'm happy overall to have a working proof of concept I can build on.  
+Due to the inevitable development delays due to learning challenges, bug squashing and the like, time and skills unfortunately didn't allow for all ***User Stories*** to be met. However, all *'Must Have'* and *'Should Have'* stories were satisfied and **MVP functionality** was achieved. As site owner I am slightly disappointed that all features weren't included in this iteration but I'm happy overall to have a working proof of concept I can build on.  
 
 ## **GENERIC USER EXPECTATIONS:**
 
@@ -90,7 +142,7 @@ Due to the inevitable development delays due to learning challenges, bug squashi
 
 # **UCD Phase 2: SCOPE**
 
-### Analysis and MoSCoW grading of User Stories:
+### Analysis and ***MoSCoW grading*** of ***User Stories:***
 
 | USER STORY                                 | MoSCoW | 
 |--------------------------------------------|:------:|
@@ -107,7 +159,7 @@ Due to the inevitable development delays due to learning challenges, bug squashi
 | USER STORY #11: Reply to Comments          |  C / W |
 | USER STORY #12: Edit User Profile          |  C / W |
 
-***Proposed Production:*** Delivery of MVP as a fully functioning solution, with the potential exception of:
+***Proposed Production:*** Delivery of **MVP as a fully functioning solution**, with the potential exception of:
 - USER STORY #10: Like / Unlike Comments
   As a registered user I can like or unlike other users' comments so that I can interact with the community.
 - USER STORY #11: Reply to Comments
@@ -115,7 +167,7 @@ Due to the inevitable development delays due to learning challenges, bug squashi
 - USER STORY #12: Edit User Profile
   As a registered user I can view, edit & delete my user profile so that I can manage my content & data.
 
-As stated previously, due to general project coding challenges and bugtime, it was fairly apparent midway through development that implementation of all user stories was unlikely. It was at this point, after brief investigations into integrating the user stories above, that I decided to focus on the work in progress and on completing the sprints required to achieve a base MVP. 
+As stated previously, due to general project coding challenges and bugtime, it was fairly apparent midway through development that implementation of all user stories was unlikely. It was at this point, after brief investigations into integrating the user stories above, that I decided to focus on the work in progress and on **completing the sprints required to achieve a base MVP**. 
 
 ----
 
@@ -123,7 +175,7 @@ As stated previously, due to general project coding challenges and bugtime, it w
 
 ## **ENTITY RELATIONSHIP DIAGRAM** 
 
-An entitiy Relationship diagram was produced in order to better visualise the data to be stored in the database. It demonstrates the basic design upon which the database will be built. It specifies what data entities and attributes will be stored and how they relate to eachother.
+An ***Entitiy Relationship diagram*** was produced in order to better visualise the data to be stored in the database. It demonstrates the basic design upon which the database will be built. It specifies what data entities and attributes will be stored and how they relate to eachother.
 
 ![ERD](static/readme/anticipator_screens/anticipator_entity_relationship_diagrams.png)
 
@@ -161,7 +213,7 @@ All fonts utilised in this project were sourced from and served by [**Google Fon
 
 - **Body Font:** *Montserrat Alternates*
 
-  *Montserrat Alternates* was chosen as a light, easy going body typeface; it's rounded bars and quirky typographic additions subtly contrast the weight and formality of **Orbitron**. Google informs usthat '...the old posters and signs in the traditional Montserrat neighborhood of Buenos Aires inspired Julieta to design this typeface and rescue the beauty of urban typography that emerged in the first half of the twentieth century.'
+  *Montserrat Alternates* was chosen as a light, easy going body typeface; it's rounded bars and quirky typographic additions subtly contrast the weight and formality of **Orbitron**. Google informs usthat '...the old posters and signs in the traditional Montserrat neighborhood of Buenos Aires inspired Julieta to design this typeface and rescue the beauty of urban typography that emerged in the first half of the twentieth century.' Nice job, Julieta!
 
 ![Google Fonts Choices](static/readme/anticipator_screens/colour_fonts/pp04_googlefonts.png)
 
@@ -204,37 +256,37 @@ During the course of this project I have utilised the following technologies:
 ## **LANGUAGES, VERSION CONTROL and FRAMEWORKS**
 
 ### HTML, CSS, JS & Python - core languages used to create this CRUD application:
-- [**JavaScript**] (https://www.javascript.com/) was used to add interactivity and enrich the User eXperience.
-- [**HTML5**] (https://html.com/html5/) (HyperText Markup Language) was used for structuring & presenting site content.
-- [**CSS**] (https://www.css3.info/) (Cascading Style Sheets) was used to provide styling to the HTML.
-- [**Python**] (https://www.python.org/) 'Python is a programming language that lets you work quickly
+- **JavaScript** (https://www.javascript.com/) was used to add interactivity and enrich the User eXperience.
+- **HTML5** (https://html.com/html5/) (HyperText Markup Language) was used for structuring & presenting site content.
+- **CSS** (https://www.css3.info/) (Cascading Style Sheets) was used to provide styling to the HTML.
+- **Python** (https://www.python.org/) 'Python is a programming language that lets you work quickly
 and integrate systems more effectively.'
 
 ### VERSION CONTROL and FRAMEWORKS:
-- [**Git**] (https://git-scm.com) was used for version control (commit to Git and push to GitHub.)
-- [**Gitpod**] (https://www.gitpod.io/) was used to write my code; an online IDE linked to the GitHub repository.
-- [**GitHub**] (https://github.com/) was used to create the repository and store the project's code after being pushed from Git.
-- [**Bootstrap Framework**] (https://getbootstrap.com/) was used as the core structuring layout for the application, ensuring mobile-first design and screen size fluidity.
-- [**Bootstrap's Imported Javascript & JQuery**] (https://getbootstrap.com/docs/4.3/getting-started/introduction/#js) used for Responsive Navbar expand & collapse, roundSlider and alert messages timeout functionality.
-- [**Django**] (https://www.djangoproject.com/) was used as the architectural engine following the model-template-view approach.
-- [**Heroku**] (https://www.heroku.com/) A cloud platform as a service enabling deployment of this CRUD application.
+- **Git** (https://git-scm.com) was used for version control (commit to **Git** and push to **GitHub**.)
+- **Gitpod** (https://www.gitpod.io/) was used to write my code; an online IDE linked to the **GitHub** repository.
+- **GitHub** (https://github.com/) was used to create the repository and store the project's code after being pushed from **Git**.
+- **Bootstrap Framework** (https://getbootstrap.com/) was used as the core structuring layout for the application, ensuring mobile-first design and screen size fluidity.
+- **Bootstrap's Imported Javascript** & **JQuery** (https://getbootstrap.com/docs/4.3/getting-started/introduction/#js) used for Responsive Navbar expand & collapse, **roundSlider** and alert messages timeout functionality.
+- **Django** (https://www.djangoproject.com/) was used as the architectural engine following the *model-template-view* approach.
+- **Heroku** (https://www.heroku.com/) A cloud platform as a service enabling deployment of this **CRUD application**.
 
 ## **TOOLS USED**
-- [**PostgreSQL**] A free, open-source relational database management system emphasizing extensibility and technical standards compliance.
-- [**Balsamiq**] (https://balsamiq.com) used to generate mobile and desktop wireframes.
-- [**favicon**] (https://www.favicon.cc/) was used to create a custom favicon for the project: ![favicon](static/favicon.ico)
-- [**roundSlider**] (https://roundsliderui.com/) is a jQuery plugin that allows the user to select a value. Used to input and update User Ratings on the site. 
-- [**Google Chrome Dev Tools**] (https://www.google.com/intl/en_uk/chrome/) used to debug & test source code using HTML5 and to test site responsiveness, also assisted in identifying the correct style properties to override some Bootstrap styling.
-- [**Google Fonts**] (https://fonts.google.com) used for all fonts utilised in the project.
-- [**amiresponsive**] (http://ami.responsivedesign.is/) used to check how responsive the site is on different devices.
-- [**JSHint**] (https://jshint.com/), [**W3C Markup**] (https://validator.w3.org/) and [**W3C Jigsaw**] (http://jigsaw.w3.org/css-validator/) used to validate all source JavaScript, HTML & CSS code.
-- [**CI Python Linter**] (https://pep8ci.herokuapp.com/) Code Institute's very own linter, used to check python code is consistent with PEP8 requirements.
-- [**Font Awesome Icons**] (https://fontawesome.com/icons?d=gallery) used for social icons in footer and site-wide iconography.
-- [**ToC**] (https://) used to generate ReadMe Table of Content.
+- **PostgreSQL** A free, open-source relational database management system emphasizing extensibility and technical standards compliance.
+- **Balsamiq** (https://balsamiq.com) used to generate mobile and desktop wireframes.
+- **favicon** (https://www.favicon.cc/) was used to create a **custom favicon** for the project: ![favicon](static/favicon.ico)
+- **roundSlider** (https://roundsliderui.com/) is a **jQuery plugin** that allows the user to select a value. Used to input and update *User Ratings* on the site. 
+- **Google Chrome Dev Tools** (https://www.google.com/intl/en_uk/chrome/) used to debug & test source code using HTML5 and to test site responsiveness, also assisted in identifying the correct style properties to override some **Bootstrap** styling.
+- **Google Fonts** (https://fonts.google.com) used for all fonts utilised in the project.
+- **amiresponsive** (http://ami.responsivedesign.is/) used to check how responsive the site is on different devices.
+- **JSHint** (https://jshint.com/), [**W3C Markup**] (https://validator.w3.org/) and [**W3C Jigsaw**] (http://jigsaw.w3.org/css-validator/) used to validate all source **JavaScript**, **HTML** & **CSS** code.
+- **CI Python Linter** (https://pep8ci.herokuapp.com/) ***Code Institute's*** very own linter, used to check **Python code** is consistent with *PEP8* requirements.
+- **Font Awesome Icons** (https://fontawesome.com/icons?d=gallery) used for social icons in footer and site-wide iconography.
+- **ToC** (https://) used to generate ReadMe **Table of Content**.
 
 ## Database
 
-The database used for this Project was Postgres, as an installed add-on to the deployed Heroku Application. Sqlite3 was used initially to test User Authentication, Registration & Login, and for testing the creation of Game data. However later in development I moved to local & deployed testing so Postgres was utilised from that point on.
+The main database used for this Project was **Postgres**, as an installed add-on to the deployed Heroku Application. **Sqlite3** was used initially to test User Authentication, Registration & Login, and for testing the creation of Game data. However later in development I moved to local & deployed testing so **Postgres** was utilised from that point on.
 
 When the app and its models were created and implemented, `python manage.py makemigrations` was run in the terminal to create the initial model package and `python manage.py migrate` was then used to apply the model to the database and create the table.
 Where possible, first-time-right methodology was approached when creating the models to avoid to many alterations to the models and the database table through multiple `makemigrations` and `migrate` commands.
@@ -249,15 +301,11 @@ Where possible, first-time-right methodology was approached when creating the mo
 
 I know it was expected but, given my struggles with Django, I'm chuffed that I managed to get it working!
 
-![CRUD Create](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_create_button.png)
------
-![CRUD Create](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_create_screen.png)
------
-![CRUD Update](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_update_del_button.png)
------
-![CRUD Update](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_update_screen.png)
------
-![CRUD Delete](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_delete.png)
+  ![CRUD Create](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_create_button.png)
+  ![CRUD Create](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_create_screen.png)
+  ![CRUD Update](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_update_del_button.png)
+  ![CRUD Update](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_update_screen.png)
+  ![CRUD Delete](static/readme/anticipator_screens/small_screen_pngs/site_small/crud_delete.png)
       
 **roundSlider jQuery Input**
 
@@ -332,7 +380,7 @@ I was looking for a cool and slick way for registered users to post their rating
 ## PEP8 Validator Testing
 
 - PEP8
-  - All .py files passed through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) without issue
+  - All Project .py files passed through the [Code Institute Python Linter](https://pep8ci.herokuapp.com/) without issue
 
 | APP | .py FILE | RESULT |
 |:-----:|:-----:|:-----:|
@@ -380,7 +428,7 @@ In addition to my own testing a link to the project was shared to family & frien
 **TEST TABLE:**
 
 | TEST | OUTCOME | PASS/FAIL |
-|---|---|:---:|
+|---|:---:|:---:|
 | All users can view site and games | index.html/game_detail.html | PASS |
 | All users can view any comments and ratings on games | game_detail.html | PASS |
 | All users can easily register or login to access user features | signup.html/login.html | PASS |
@@ -412,7 +460,7 @@ In addition to my own testing a link to the project was shared to family & frien
 
   - Create new project: `anticipator`
   - Create new app: `xbox`
-  - Add `xbox` to the installed apps in settings.py
+  - Add `xbox` to the installed apps in *settings.py*
   - Migrate all new changes to the database
   - Run the server to test
 
@@ -427,46 +475,46 @@ In addition to my own testing a link to the project was shared to family & frien
     - Select the *Create app* button
 
   - Attach **PostgreSQL database**
-    - In **Heroku** -> resources
-    - Search add-ons for *Postgres*
-    - Select: *Heroku Postgres*
-    - Submit order form
+    - In **Heroku/Resources**
+      - Search add-ons for *Postgres*
+      - Select: *Heroku Postgres*
+      - Submit order form
  
   - Prepare ***environment*** and ***settings.py*** files
  
     - Create `env.py` file
-    - In `env.py`:Add DATABASE_URL with the Postgres URL from Heroku
+    - In `env.py`:Add `DATABASE_URL` with the **Postgres** `URL` from **Heroku**
     - Get a randomly generated **SECRET_KEY** *e.g.* from [key generator](https://django-secret-key-generator.netlify.app/)
-    - In **Heroku**: Add SECRET_KEY + generated key to the config vars
-    - In ***settings.py***: Add if statement to prevent production server from erroring
-    - Replace insecure key with the environment variable for the SECRET_KEY
-    - Add Heroku database as the back end
+    - In **Heroku**: Add `SECRET_KEY` + generated key to the `Config Vars`
+    - In ***settings.py***: Add `if` statement to prevent production server from erroring
+    - Replace insecure key with the environment variable for the `SECRET_KEY`
+    - Add **Heroku** database as the back end
     - Migrate changes to new database
 
   - Get static media files stored on **Cloudinary**
-    - Create Cloudinary account
-    - From the dashboard, copy the API Environment variable
-    - In the settings.py file create a new environment variable for CLOUDINARY_URL
-    - Add the CLOUDINARY_URL variable to Heroku
-    - Add a temporary config var for DISABLE_COLLECTSTATIC
-    - In settings.py add Cloudinary as an installed app
-    - Add static and media file variables
+    - Create **Cloudinary** account
+    - From the dashboard, copy the `API environment variable`
+    - In the *settings.py* file create a new environment variable for `CLOUDINARY_URL`
+    - Add the `CLOUDINARY_URL` variable to **Heroku**
+    - Add a temporary `Config Var` for `DISABLE_COLLECTSTATIC`
+    - In *settings.py* add **Cloudinary** as an installed app
+    - Add `static` and `media` file variables
     - Add templates directory
-    - Change DIR's key to point to TEMPLATES_DIR
-    - Add Heroku hostname to allowed hosts
-    - Create directories for media, static and templates in the project workspace
+    - Change `DIR's` key to point to `TEMPLATES_DIR`
+    - Add **Heroku** hostname to `allowed hosts`
+    - Create directories for `media`, `static` and `templates` in the project workspace
     - Create a `Procfile`
 
-- Deploy new empty project to Heroku
+- Deploy *new empty project* to **Heroku**
 
 ----
 
 ## **DEPLOYMENT**
 
-This full stack application was developed using in-browser IDE **Gitpod Code** v1.73.1 and version controlled via local **(git)** and online **(github)** repository technologies. All secret environment variables were stored in an `env.py` file, which was added to a `.gitignore` file and out of the public repo. Those variables detailed in the `env.py` file were re-enacted in Heroku Settings for this application under the `Config Vars` section, allowing the deployed site to utilise these secret variables.
+This full stack application was developed using in-browser IDE **Gitpod Code** v1.73.1 and version controlled via local **(git)** and online **(github)** repository technologies. All secret environment variables were stored in an `env.py` file, which was added to a `.gitignore` file and out of the public repo. Those variables detailed in the `env.py` file were re-enacted in **Heroku/Settings** for this application under the `Config Vars` section, allowing the deployed site to utilise these secret variables.
 
 The terminal was used to deploy the project locally:
-- Create a repository on **GitHub** from the Code Institute full template
+- Create a repository on **GitHub** from the ***Code Institute full template***
 - Open repository in source code editor **(GitPod)**
 - Enter `python3 manage.py runserver` into the terminal
 - Open local host address on web browser
@@ -492,7 +540,7 @@ To clone the repository:
 - Open your preferred Integrated Development Environment (IDE) and navigate to the terminal window
 - Change the directory to where you want to clone the repository to
 - Paste the `Git URL` copied from above and click 'Ok'
-- Once open, create an `env.py` file and assign the Database URL, Secret Key and other secret variables - ensure the `env.py` is in the root project directory and add it to `.gitignore` to ensure any Secret details aren't exposed
+- Once open, create an `env.py` file and assign the *Database URL, Secret Key and other secret variables* - ensure the `env.py` is in the root project directory and add it to `.gitignore` to ensure any Secret details aren't exposed
 
 ----
 
@@ -500,13 +548,19 @@ To clone the repository:
 
 **IN-DEPLOYMENT BUG**
 
-### **Ongoing Bug Report: Image upload via create page doesn't work**
+### **Ongoing Bug Report: Image upload via CreateGameView form fails to attach to related POST request**
   
-  • *Issue:* I have been diligently searching for a solution to this issue. I am guessing the Django/CrispyForm upload field may be broken or having issues with the attributed CloudinaryField, as there are several SO posts alluding to this. When I had the opportunity I raised this issue with my Mentor, Marcel, and we had a good poke around trying to get it working but with no avail. Following a Google search mentioning several things I didn't understand, Marcel suggested adding the issue as an ongoing bug. I think there may be a solution, although beyond my current understanding. The image attaches to the Create request and the record is created successfully with no errors, just with the placeholder image instead of the uploaded one.
+  • *Issue:* I have been diligently searching for a solution to this issue, however I am guessing the **Django/CrispyForm** upload field may be broken or having issues with the attributed ***CloudinaryField***, as there are several ***SO*** posts alluding to this. When I had the opportunity I raised this issue with my Mentor, Marcel, and we had a good poke around trying to get it working but to no avail. Following a Google search and mentioning several things I didn't really understand, Marcel suggested adding the issue as an ongoing bug in the **Project ReadMe**. Obviously I know there likely is a solution, although it currently appears beyond my level of understanding. The image seems to attach to the *Create* request (see below) and the record is created successfully with no errors, just with the placeholder image instead of the desired uploaded one.
   
-  • *Fix:* Despite Mentor intervention the only method and current workaround is to upload images via Admin, where frustratingly the process works seamlessly. As this is beyond my control and skill level to fix, I am hoping you will forgive this ongoing issue.  
+  • *Fix:* Despite welcome ***Mentor intervention***, the only method and **current workaround** is for an Admin to upload images via the Admin panel, where frustratingly the process works seamlessly. As this seems beyond my control and current understanding to rectify at present, I am hoping you will forgive this ongoing issue.  
 
-  ![image](static/readme/anticipator_screens/bug/pp04_bug_ide_css.png)
+- **Image** 'attaches' via upload dialog box and appears to be ready to send when form is posted..:
+
+  ![image](static/readme/anticipator_screens/bug/pp04_bug_img_1.png)
+
+- Form **feature_image** field is ***Placeholder*** upon form submission - **ggrrr!**
+
+  ![image](static/readme/anticipator_screens/bug/pp04_bug_img_2.png)
 
 ----
 
@@ -514,9 +568,9 @@ To clone the repository:
 
 ### **Bug: Scare: Sudden site-wide loss of CSS the day before submission!**
   
-  • *Issue:* After a successful initial deploy of the final project, I discovered that I had failed Heroku deployments and a divergent Gitpod branch (I think this wa because I was commiting to my ReadMe direct on Github possibly). Subsequently I did a merge and all seemed fine, until the CSS went site-wide and I now get multiple errors on my .gitpod.yml..!
+  • *Issue:* After a successful initial deploy of the final project, I discovered that I had failed **Heroku** deployments and a *divergent **Gitpod** branch* (I think this could be because I was commiting to my ReadMe file direct on Github possibly)... Subsequently I did a *merge* and all seemed fine, until the **CSS failed site-wide** and I now have **multiple errors** flagged on my ***.gitpod.yml***..!
   
-  • *Fix:* After a panicked Slack to Marcel, he suggested temporarily setting debug = True and see if that fixed it, which it did. I've yet to push these changes yet though, so fingers crossed! 
+  • *Fix:* After a panicked Slack message to Marcel, he suggested temporarily setting `debug = True` to see if that fixed it, which it did. I've yet to push and final-deploy these changes yet though, so fingers crossed! 
 
   ![image](static/readme/anticipator_screens/bug/pp04_bug_ide_css.png)
   ![image](static/readme/anticipator_screens/bug/pp04_bug_ide.png)
@@ -527,7 +581,7 @@ To clone the repository:
   
   • *Issue:* I spent hours, days maybe, chasing variables and figuring out how to target and extract them - the joy I felt late one evening when the number I was looking for turned up in a queryset! Then I just had to figure out how to get it out...
   
-  • *Fix:* https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset phew, did this one lead me down some StackOverflow rabbit holes!
+  • *Fix:* https://stackoverflow.com/questions/54815303/how-to-extract-data-from-django-queryset phew, did this one lead me down some ***StackOverflow*** rabbit holes!
 
   ![image](static/readme/anticipator_screens/bug/pp04_bug_rating_2.png)
   ![image](static/readme/anticipator_screens/bug/pp04_bug_rating_1.png)
@@ -536,15 +590,17 @@ To clone the repository:
 
 ### **Bug: Success message method not working for DeleteView:**
   
-  • *Issue:* Took me a little while to find out how best to implement messages on the DeleteView. 
+  • *Issue:* Took me a little while to find out how best to implement messages on the *DeleteView*. 
   
-  • *Fix:* https://stackoverflow.com/questions/24822509/
+  • *Fix:* Solution spotted on good ol' https://stackoverflow.com/questions/24822509/
+
+  ![Success](static/readme/anticipator_screens/small_screen_pngs/site_small/alert_del.png)
 
 ----
 
 ### **Bug: Date picker in Django form:**
   
-  • *Issue:* Initial Django/Crispy Form renderings for CreateView weren't displaying a date picker in the input field, only the option to type dates manually.  
+  • *Issue:* Initial **Django/Crispy Form** renderings for *CreateView* weren't displaying a date picker in the input field, only the option to type dates manually.  
   
   • *Fix:* Code to enable DateInput widget referenced/sourced from: https://stackoverflow.com/questions/3367091/whats-the-cleanest-simplest-to-get-running-datepicker-in-django
 
@@ -561,11 +617,11 @@ Other coders code that I've referenced, learnt from, been inspired by or just pl
 • **All game images & info** is credited either under the **UCD Phase 5** IMAGERY section or in-copy within the application.
 
 • **Django Custom User Model** process and code referenced/sourced from: https://testdriven.io/blog/django-custom-user-model/
-  - After initial research I learnt that [the official Django documentation highly recommends using a custom user model instead. This provides far more flexibility down the line so, as a general rule, always use a custom user model for all new Django projects.](https://learndjango.com/tutorials/django-custom-user-model) To this end I found and followed the testdriven.io method as referenced above and did just that.
+  - After initial research I learnt that [the official Django documentation highly recommends using a custom user model instead. This provides far more flexibility down the line so, as a general rule, always use a custom user model for all new Django projects.](https://learndjango.com/tutorials/django-custom-user-model) To this end I found and followed the **testdriven.io** method as referenced above and did just that.
 
 • **Settings for CustomUser email as username in Django-AllAuth** process and code referenced/sourced from: https://pyphilly.org/know-thy-user-custom-user-models-django-allauth/
 
-• **Rating method theory & constraints** referenced/sourced from: https://stackoverflow.com/questions/58115738/realizing-rating-in-django to ensure uniqueness & range compliance.
+• **Rating method theory & constraints** referenced/sourced from: https://stackoverflow.com/questions/58115738/realizing-rating-in-django to ensure rating uniqueness & range compliance.
 
 ----
 
